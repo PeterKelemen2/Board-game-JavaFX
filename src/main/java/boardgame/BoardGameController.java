@@ -1,6 +1,7 @@
 package boardgame;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -12,12 +13,14 @@ public class BoardGameController {
     @FXML
     private GridPane board;
 
+
     @FXML
     private void initialize() {
+        board.getStyleClass().add("board");
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
                 var square = createSquare(i,j);
-                board.add(square, j, i);
+                //board.add(square, j, i);
             }
         }
     }
@@ -29,7 +32,7 @@ public class BoardGameController {
         var piece = new Circle(50);
         piece.setFill(Color.TRANSPARENT);
         square.getChildren().add(piece);
-        square.setOnMouseClicked(this::handleMouseClick); // MOUSE CLICK HANDLER
+        square.setOnMouseClicked(this::showStep); // MOUSE CLICK HANDLER
 
 
         if(i == 0){
@@ -49,7 +52,48 @@ public class BoardGameController {
     }
 
 
+    private void showStep(MouseEvent event){
+        // egyszer klikkelünk, megmutatja a valid lépést
+        // aztán amikor oda léptünk akkor eltünteti azokat és
+        // cserél színt (hogy tényleg lépés legyen)
 
+        var sq = (StackPane) event.getSource();
+        var row = GridPane.getRowIndex(sq);
+        var col = GridPane.getColumnIndex(sq);
+        System.out.printf("Click on square (%d,%d)%n", row, col);
+        var coin = (Circle) sq.getChildren().get(0);
+
+
+
+
+        /*
+        for(int i = col-1; i<col+2; i++){
+            if(i>=0 && i<board.getColumnCount()){
+                var piece = new Circle(50);
+                piece.setFill(Color.ORANGE);
+                board.add(piece,i,row+1);
+            }
+        }*/
+    }
+
+    Node getChildAtRowCol(int row, int col){
+        for (Node child: board.getChildren()){
+            if(GridPane.getColumnIndex(child) == col
+            && GridPane.getRowIndex(child) == row){
+                return child;
+            }
+        }
+        return null;
+    }
+
+    Node getNodeByCoordinate(int row, int column) {
+        for (Node node : board.getChildren()) {
+            if(GridPane.getColumnIndex(node) == row && GridPane.getColumnIndex(node) == column){
+                return node;
+            }
+        }
+        return null;
+    }
 
     @FXML
     private void handleMouseClick(MouseEvent event) {
