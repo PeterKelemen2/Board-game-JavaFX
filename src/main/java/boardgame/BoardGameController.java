@@ -1,6 +1,7 @@
 package boardgame;
 
 import boardgame.model.BoardGameModel;
+import boardgame.model.Square;
 import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseButton;
@@ -24,14 +25,20 @@ public class BoardGameController {
             for (var j = 0; j < board.getColumnCount(); j++) {
                 var square = createSquare(i, j);
                 board.add(square, j, i);
+                model.setupBoard(i,j);
             }
         }
+
     }
 
-    private StackPane createSquare(int i, int j) {
+
+    public StackPane createSquare(int i, int j) {
+
         var square = new StackPane();
         square.getStyleClass().add("square");
         var piece = new Circle(50);
+
+
 /*
         piece.fillProperty().bind(Bindings.when(model.squareProperty(i, j).isEqualTo(Square.NONE))
                 .then(Color.TRANSPARENT)
@@ -52,6 +59,8 @@ public class BoardGameController {
                             case RED -> Color.RED;
                             case BLUE -> Color.BLUE;
                             case YELLOW -> Color.YELLOWGREEN;
+                            case BLACK -> Color.BLACK;
+                            case ORANGERED -> Color.ORANGERED;
                         };
                     }
                 }
@@ -59,6 +68,12 @@ public class BoardGameController {
         square.getChildren().add(piece);
         square.setOnMouseClicked(this::handleMouseClick);
         //square.setOnMouseClicked(this::handleDoubleMouseClick);
+
+        if((i == 2 && j== 4) || (i == 3 && j == 2)){
+            square.getStyleClass().add("forbiddenSquare");
+
+        }
+
         return square;
     }
 

@@ -2,6 +2,7 @@
     -fx-border-style: solid;
 }
 
-.square:hover {
-    -fx-background-color: whitesmoke;
+.forbiddenSquare{
+    -fx-background-color: black;
 }
+

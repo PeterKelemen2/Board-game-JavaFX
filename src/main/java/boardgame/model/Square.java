@@ -4,5 +4,7 @@ public enum Square {
     NONE,
     RED,
     BLUE,
-    YELLOW
+    YELLOW,
+    BLACK,
+    ORANGERED
 }
