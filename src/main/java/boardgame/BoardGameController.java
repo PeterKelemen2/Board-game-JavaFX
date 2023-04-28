@@ -1,11 +1,14 @@
 package boardgame;
 
+import boardgame.model.BoardGameModel;
+import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
 public class BoardGameController {
@@ -13,86 +16,50 @@ public class BoardGameController {
     @FXML
     private GridPane board;
 
+    private BoardGameModel model = new BoardGameModel();
 
     @FXML
     private void initialize() {
-        board.getStyleClass().add("board");
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
-                var square = createSquare(i,j);
-                //board.add(square, j, i);
+                var square = createSquare(i, j);
+                board.add(square, j, i);
             }
         }
     }
 
     private StackPane createSquare(int i, int j) {
-
         var square = new StackPane();
         square.getStyleClass().add("square");
         var piece = new Circle(50);
-        piece.setFill(Color.TRANSPARENT);
+/*
+        piece.fillProperty().bind(Bindings.when(model.squareProperty(i, j).isEqualTo(Square.NONE))
+                .then(Color.TRANSPARENT)
+                .otherwise(Bindings.when(model.squareProperty(i, j).isEqualTo(Square.HEAD))
+                        .then(Color.RED)
+                        .otherwise(Color.BLUE))
+        );
+*/
+        piece.fillProperty().bind(
+                new ObjectBinding<Paint>() {
+                    {
+                        super.bind(model.squareProperty(i, j));
+                    }
+                    @Override
+                    protected Paint computeValue() {
+                        return switch (model.squareProperty(i, j).get()) {
+                            case NONE -> Color.TRANSPARENT;
+                            case RED -> Color.RED;
+                            case BLUE -> Color.BLUE;
+                            case YELLOW -> Color.YELLOWGREEN;
+                        };
+                    }
+                }
+        );
         square.getChildren().add(piece);
-        square.setOnMouseClicked(this::showStep); // MOUSE CLICK HANDLER
-
-
-        if(i == 0){
-            piece.setFill(Color.RED);
-        }
-
-        if(i == 5){
-            piece.setFill(Color.BLUE);
-        }
-
-        if((i == 2 && j == 4) || (i == 3 && j == 2)){
-            piece.setFill(Color.TRANSPARENT);
-        }
-
+        square.setOnMouseClicked(this::handleMouseClick);
+        //square.setOnMouseClicked(this::handleDoubleMouseClick);
         return square;
-
-    }
-
-
-    private void showStep(MouseEvent event){
-        // egyszer klikkelünk, megmutatja a valid lépést
-        // aztán amikor oda léptünk akkor eltünteti azokat és
-        // cserél színt (hogy tényleg lépés legyen)
-
-        var sq = (StackPane) event.getSource();
-        var row = GridPane.getRowIndex(sq);
-        var col = GridPane.getColumnIndex(sq);
-        System.out.printf("Click on square (%d,%d)%n", row, col);
-        var coin = (Circle) sq.getChildren().get(0);
-
-
-
-
-        /*
-        for(int i = col-1; i<col+2; i++){
-            if(i>=0 && i<board.getColumnCount()){
-                var piece = new Circle(50);
-                piece.setFill(Color.ORANGE);
-                board.add(piece,i,row+1);
-            }
-        }*/
-    }
-
-    Node getChildAtRowCol(int row, int col){
-        for (Node child: board.getChildren()){
-            if(GridPane.getColumnIndex(child) == col
-            && GridPane.getRowIndex(child) == row){
-                return child;
-            }
-        }
-        return null;
-    }
-
-    Node getNodeByCoordinate(int row, int column) {
-        for (Node node : board.getChildren()) {
-            if(GridPane.getColumnIndex(node) == row && GridPane.getColumnIndex(node) == column){
-                return node;
-            }
-        }
-        return null;
     }
 
     @FXML
@@ -101,18 +68,17 @@ public class BoardGameController {
         var row = GridPane.getRowIndex(square);
         var col = GridPane.getColumnIndex(square);
         System.out.printf("Click on square (%d,%d)%n", row, col);
-        var coin = (Circle) square.getChildren().get(0);
-        coin.setFill(nextColor((Color) coin.getFill()));
+        model.move(row, col);
     }
 
-    private Color nextColor(Color color) {
-        if (color == Color.TRANSPARENT) {
-            return Color.RED;
+    @FXML
+    private void handleDoubleMouseClick(MouseEvent event){
+        var square = (StackPane) event.getSource();
+        int clickCount = event.getClickCount();
+        if(clickCount % 2 == 0){
+            //model.showMove(model.x, model.y);
         }
-        if (color == Color.RED) {
-            return Color.BLUE;
-        }
-        return Color.TRANSPARENT;
+        System.out.println(clickCount);
     }
 
 }

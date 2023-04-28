@@ -1,13 +1,7 @@
-.board{
-    -fx-grid-lines-visible: true;
-}
-
 .square {
     -fx-border-style: solid;
 }
 
 .square:hover {
-    -fx-background-color: yellow;
+    -fx-background-color: whitesmoke;
 }
-
-

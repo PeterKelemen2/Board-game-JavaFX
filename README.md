@@ -1,3 +1,4 @@
-# TODO: a title for your project
+javafx-board-game-example2
+==========================
 
-TODO: a detailed description of your project (must contain at least the original description of the assignment)
+Example project that demonstrates how to implement a board game in [JavaFX](https://openjfx.io/).
