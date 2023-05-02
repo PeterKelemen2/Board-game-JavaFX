@@ -28,7 +28,6 @@ public class BoardGameController {
                 model.setupBoard(i,j);
             }
         }
-
     }
 
 
@@ -37,7 +36,6 @@ public class BoardGameController {
         var square = new StackPane();
         square.getStyleClass().add("square");
         var piece = new Circle(50);
-
 
 /*
         piece.fillProperty().bind(Bindings.when(model.squareProperty(i, j).isEqualTo(Square.NONE))
@@ -66,15 +64,34 @@ public class BoardGameController {
                 }
         );
         square.getChildren().add(piece);
-        square.setOnMouseClicked(this::handleMouseClick);
-        //square.setOnMouseClicked(this::handleDoubleMouseClick);
+        square.setOnMouseClicked(this::dummyClickMethod);
+        //square.setOnMouseClicked(this::handleMouseClick);
+        //square.setOnMouseClicked(this::handleLegalMoveClick);
 
         if((i == 2 && j== 4) || (i == 3 && j == 2)){
             square.getStyleClass().add("forbiddenSquare");
-
         }
 
         return square;
+    }
+
+    @FXML
+    private void dummyClickMethod(MouseEvent event){
+        var square = (StackPane) event.getSource();
+        var row = GridPane.getRowIndex(square);
+        var col = GridPane.getColumnIndex(square);
+        System.out.printf("Click on square (%d,%d)%n", row, col);
+        model.showMoveAdvanced(row,col);
+
+        String color = model.whatColor(row,col);
+
+        switch (color){
+            case "yellow":
+                model.moveToYellow(row,col);
+            case "blue":
+                //model.moveToBlue();
+
+        }
     }
 
     @FXML
@@ -83,17 +100,18 @@ public class BoardGameController {
         var row = GridPane.getRowIndex(square);
         var col = GridPane.getColumnIndex(square);
         System.out.printf("Click on square (%d,%d)%n", row, col);
-        model.move(row, col);
+        //model.move(row, col);
+        //model.showMoveAdvanced(row,col);
+        System.out.println(model.whatColor(row,col));
     }
 
-    @FXML
-    private void handleDoubleMouseClick(MouseEvent event){
+    @FXML void handleLegalMoveClick(MouseEvent event){
         var square = (StackPane) event.getSource();
-        int clickCount = event.getClickCount();
-        if(clickCount % 2 == 0){
-            //model.showMove(model.x, model.y);
-        }
-        System.out.println(clickCount);
+        var row = GridPane.getRowIndex(square);
+        var col = GridPane.getColumnIndex(square);
+        System.out.printf("Moved to square (%d,%d)%n", row, col);
+        //model.makeStep(row,col);
     }
+
 
 }
