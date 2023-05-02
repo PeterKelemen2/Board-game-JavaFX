@@ -27,6 +27,17 @@ public class BoardGameModel {
     int yy;
     int lx;
     int ly;
+    int rx = 0;
+
+    int clickedYellowX = 0;
+    int clickedYellowY = 0;
+    int wasRedX = 0;
+    int wasRedY = 0;
+    int wasBlueX = 0;
+    int wasBlueY = 0;
+
+    int clickedRedX = 0;
+    int clickedRedY = 0;
 
     boolean blueInitialized = false;
 
@@ -38,20 +49,22 @@ public class BoardGameModel {
     public int sumOfWasRedMatrix = 0;
     public int sumOfMatrix = 0;
 
-    public int[][] wasYellow = new int[1][2];
+    //public int[][] wasYellow = new int[1][2];
     public int[][] wasBlue = new int[1][2];
 
     public String whatColor(int i, int j){
         switch (board[i][j].get()){
             case RED:
+                wasRedX = i;
+                wasRedY = j;
                 return "red";
             case BLUE:
-                wasBlue[0][0] = i;
-                wasBlue[0][1] = j;
+                wasBlueX = i;
+                wasBlueY = j;
                 return "blue";
             case YELLOW:
-                wasYellow[0][0] = i;
-                wasYellow[0][1] = j;
+                clickedYellowX = i;
+                clickedYellowY = j;
                 return "yellow";
             case BLACK:
                 return "black";
@@ -122,6 +135,16 @@ public class BoardGameModel {
         }
     }
 
+    public void initializeCache(){ // TODO: Needs sorting out
+        for(int i=0; i<3; i++){
+            for (int j=0; j<2; j++){
+                legalMove[i][j] = 9;
+                wasBlueMatrix[i][j] = 9;
+                wasRedMatrix[i][j] = 9;
+            }
+        }
+    }
+
     public void purgeShown(){
         nullifyLegalMoveMatrix();
 
@@ -165,15 +188,32 @@ public class BoardGameModel {
 
     }
 
-    public void showMoveAdvanced(int i, int j){
-        //purgeShown();
+    public void purgeShownAdvanced(){ // TODO: Needs fixing
+        //nullifyLegalMoveMatrix();
 
+        // Core problem lies within being able to discard false reports
 
-        if((i >= 0 && i < 5) && (j > 0 && j < 6)){
-            if((i == 2 && j== 4) || (i == 3 && j == 2)){
-                System.out.println("Forbibben square");
+        for(int auxX = 0; auxX < 3; auxX++){
+            if(legalMove[auxX][0] == wasBlueMatrix[auxX][0] &&
+               legalMove[auxX][1] == wasBlueMatrix[auxX][1]){
+                board[legalMove[auxX][0]][legalMove[auxX][1]].set(Square.BLUE);
             } else {
-                for(int k  = j-1; k<= j+1; k++){
+                board[legalMove[auxX][0]][legalMove[auxX][1]].set(Square.NONE);
+            }
+
+        }
+        nullifyLegalMoveMatrix();
+        initializeCache();
+    }
+
+    public void showMoveAdvanced(int i, int j){
+        purgeShown();
+
+        if((i >= 0 && i < 5) && (j > 0 && j < 6)){ // If it's in the middle
+            if((i == 2 && j== 4) || (i == 3 && j == 2)){
+                System.out.println("Forbidden square"); // Black square
+            } else {
+                for(int k = j-1; k<= j+1; k++){
                     if(board[i + 1][k].get() != Square.BLACK && board[i][j].get() == Square.RED){
                         if(board[i+1][k].get() == Square.BLUE){
                             wasBlueMatrix[x][0] = i+1;
@@ -184,10 +224,10 @@ public class BoardGameModel {
 
                         }
                         if(board[i+1][k].get() == Square.RED){
-                            wasRedMatrix[x][0] = i+1;
-                            wasRedMatrix[x][1] = k;
+                            wasRedMatrix[rx][0] = i+1;
+                            wasRedMatrix[rx][1] = k;
                             //printMatrix(wasBlueMatrix);
-                            x++;
+                            rx++;
                             //blueInitialized = true;
 
                         }
@@ -201,21 +241,32 @@ public class BoardGameModel {
                 }
             }
         }
+
         if((j == 0) && board[i][j].get() == Square.RED){
             board[i+1][j].set(Square.YELLOW);
             board[i+1][j+1].set(Square.YELLOW);
+
+            wasRedMatrix[rx][0] = i+1;
+            wasRedMatrix[rx][1] = j;
+            wasRedMatrix[rx++][0] = i+1;
+            wasRedMatrix[rx++][1] = j+1;
 
             legalMove[0][0] = i+1;
             legalMove[0][1] = j;
             legalMove[1][0] = i+1;
             legalMove[1][1] = j+1;
 
-            lx++;
+            //lx++;
             sumOfMatrix(legalMove);
         }else if(j == 6 && board[i][j].get() == Square.RED){
 
             board[i+1][j-1].set(Square.YELLOW);
             board[i+1][j].set(Square.YELLOW);
+
+            wasRedMatrix[0][0] = i+1;
+            wasRedMatrix[0][1] = j-1;
+            wasRedMatrix[1][0] = i+1;
+            wasRedMatrix[1][1] = j;
 
             legalMove[0][0] = i+1;
             legalMove[0][1] = j-1;
@@ -226,6 +277,9 @@ public class BoardGameModel {
         }
         //System.out.println("Legal moves on:");
         printMatrix(legalMove);
+        x = 0;
+        lx = 0;
+        rx = 0;
     }
 
     public void showMove(int i, int j){
@@ -256,19 +310,36 @@ public class BoardGameModel {
 
     }
 
+    public void clickedOnRed(int i, int j){
+        clickedRedX = i;
+        clickedRedY = j;
+        showMoveAdvanced(i,j);
+        System.out.println("Clicked on red");
+    }
+
+    public boolean canDo(){ // idk what I wanted to do with this
+        return false;
+    }
 
     public void moveToYellow(int i, int j){
-        //purgeShown();
-        board[i][j].set(Square.NONE);
-        int wx = wasYellow[0][0];
-        int wy = wasYellow[0][1];
-        board[wx][wy].set(Square.RED);
+        board[clickedYellowX][clickedYellowY].set(Square.RED);
+        board[clickedRedX][clickedRedY].set(Square.NONE);
+
         System.out.println("Moved to Yellow");
         purgeShown();
     }
 
-    public void moveToBlue(){
+    public void moveToBlue(int i, int j){
+
+        for(int k=0; k<3; k++){
+            if(wasBlueMatrix[k][0] == wasBlueX && wasBlueMatrix[k][1] == wasBlueY){
+                board[i][j].set(Square.RED);
+                board[wasBlueX][wasBlueY].set(Square.NONE);
+            }
+        }
+
         System.out.println("Moved to Blue");
+        purgeShownAdvanced();
     }
 
 
@@ -300,6 +371,7 @@ public class BoardGameModel {
 
     public static void main(String[] args) {
         var model = new BoardGameModel();
+
         System.out.println(model);
     }
 

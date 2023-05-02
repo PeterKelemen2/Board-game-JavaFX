@@ -81,17 +81,25 @@ public class BoardGameController {
         var row = GridPane.getRowIndex(square);
         var col = GridPane.getColumnIndex(square);
         System.out.printf("Click on square (%d,%d)%n", row, col);
-        model.showMoveAdvanced(row,col);
+
+
 
         String color = model.whatColor(row,col);
+        //model.showMoveAdvanced(row,col);
 
-        switch (color){
-            case "yellow":
-                model.moveToYellow(row,col);
-            case "blue":
-                //model.moveToBlue();
-
+        if(color == "red"){
+            model.showMoveAdvanced(row,col); // TODO: Maybe not at the best spot
+            model.clickedOnRed(row,col);
         }
+
+        if(color == "yellow"){
+            model.moveToYellow(row,col);
+        }
+
+        if(color == "blue"){
+            model.moveToBlue(row,col); // TODO: Fixing blue click
+        }
+
     }
 
     @FXML
