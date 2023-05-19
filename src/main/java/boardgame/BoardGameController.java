@@ -26,6 +26,7 @@ public class BoardGameController {
                 var square = createSquare(i, j);
                 board.add(square, j, i);
                 model.setupBoard(i,j);
+                model.getColorData();
             }
         }
     }
@@ -65,6 +66,7 @@ public class BoardGameController {
         );
         square.getChildren().add(piece);
         square.setOnMouseClicked(this::dummyClickMethod);
+
         //square.setOnMouseClicked(this::handleMouseClick);
         //square.setOnMouseClicked(this::handleLegalMoveClick);
 
@@ -82,22 +84,23 @@ public class BoardGameController {
         var col = GridPane.getColumnIndex(square);
         System.out.printf("Click on square (%d,%d)%n", row, col);
 
-
-
         String color = model.whatColor(row,col);
         //model.showMoveAdvanced(row,col);
 
-        if(color == "red"){
-            model.showMoveAdvanced(row,col); // TODO: Maybe not at the best spot
-            model.clickedOnRed(row,col);
+        if(color.equals("red")){
+            model.showLegalMoves(row,col);
         }
 
-        if(color == "yellow"){
-            model.moveToYellow(row,col);
+        if(color.equals("yellow")){
+            model.makeMove();
         }
 
-        if(color == "blue"){
+        if(color.equals("blue")){
             model.moveToBlue(row,col); // TODO: Fixing blue click
+        }
+
+        if(color.equals("no color")){
+            System.out.println("bleee");
         }
 
     }

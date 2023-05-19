@@ -10,15 +10,6 @@ import javafx.scene.input.*;
 
 public class BoardGameModel {
 
-    /*
-    Board:
-    00 01 02 03 04 05 06
-    10 11 12 13 14 15 16
-    20 21 22 23 24 25 26
-    30 31 32 33 34 35 36
-    40 41 42 43 44 45 46
-    50 51 52 53 54 55 56
-    */
 
     public static int BOARD_SIZE = 7;
     public int x = 0;
@@ -28,6 +19,7 @@ public class BoardGameModel {
     int lx;
     int ly;
     int rx = 0;
+    int colorCode;
 
     int clickedYellowX = 0;
     int clickedYellowY = 0;
@@ -49,6 +41,8 @@ public class BoardGameModel {
     public int sumOfWasRedMatrix = 0;
     public int sumOfMatrix = 0;
 
+    public int[][] colorData = new int [6][7];
+
     //public int[][] wasYellow = new int[1][2];
     public int[][] wasBlue = new int[1][2];
 
@@ -57,6 +51,7 @@ public class BoardGameModel {
             case RED:
                 wasRedX = i;
                 wasRedY = j;
+                //System.out.println("Clicked on red at " + wasRedX + " " + wasRedY );
                 return "red";
             case BLUE:
                 wasBlueX = i;
@@ -72,6 +67,63 @@ public class BoardGameModel {
                 return "no color";
         }
         return "Could not get color.";
+    }
+
+    public void getColorData(){
+        String color = null;
+
+        for(int i = 0; i<6; i++){
+            for(int j = 0; j<7; j++){
+                color = whatColor(i,j);
+
+                switch(color){
+                    case "red" -> {
+                        colorData[i][j] = 1;
+                        // TODO find a way to get last clicked red
+                        //wasRedX = i;
+                        //wasRedY = j;
+                        //System.out.println("Clicked on red at " + wasRedX + " " + wasRedY );
+                    }
+                    case "blue" -> colorData[i][j] = 2;
+                    case "black" -> colorData[i][j] = 3;
+                    default -> colorData[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    public void resetBoardAfterStepShow(){
+        for(int i = 0; i<6; i++){
+            for(int j = 0; j<7; j++){
+                colorCode = colorData[i][j];
+                switch (colorCode){
+                    case 1 -> board[i][j].set(Square.RED);
+                    case 2 -> board[i][j].set(Square.BLUE);
+                }
+            }
+        }
+    }
+
+    public void printColorData(){
+        getColorData();
+        for (int i = 0; i < 6; i++){
+            System.out.println();
+            for(int j = 0; j < 7; j++){
+                System.out.print(colorData[i][j] + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    public void makeMove(){
+        int fromX = wasRedX;
+        int fromY = wasRedY;
+        int toX = clickedYellowX;
+        int toY = clickedYellowY;
+        System.out.println("Moved from " + fromX + " " + fromY + " to " + toX + " " + toY);
+        colorData[toX][toY] = colorData[fromX][fromY];
+        colorData[fromX][fromY] = 0;
+        getColorData(); // TODO not sure if here appropriate
     }
 
     public void printMatrix(int[][] matrix){
@@ -206,14 +258,55 @@ public class BoardGameModel {
         initializeCache();
     }
 
-    public void showMoveAdvanced(int i, int j){
+    public boolean checkIfMiddle(int i, int j){
+        if(
+                (i >= 0 && i < 5) &&
+                (j > 0 && j < 6)
+                //(i == 2 && j == 4) &&
+                //(i == 3 && j == 2)
+        ){
+            return true;
+        }
+        return false;
+    }
+
+    public void showLegalMoves(int i, int j){
+        purgeShown();
+        clickedOnRed(i,j);
+        getColorData();
+        printColorData();
+
+        int onRowToShow = i+1;
+
+        // if not on first or last column
+        if(j-1 < 0){
+            board[onRowToShow][j].set(Square.YELLOW);
+            board[onRowToShow][j+1].set(Square.YELLOW);
+
+        } else if(j+1 > 6){
+            board[onRowToShow][j-1].set(Square.YELLOW);
+            board[onRowToShow][j].set(Square.YELLOW);
+        } else {
+            board[onRowToShow][j-1].set(Square.YELLOW);
+            board[onRowToShow][j].set(Square.YELLOW);
+            board[onRowToShow][j+1].set(Square.YELLOW);
+        }
+
+
+
+
+    }
+
+    //public void
+
+    public void showMove(int i, int j){
         purgeShown();
 
-        if((i >= 0 && i < 5) && (j > 0 && j < 6)){ // If it's in the middle
-            if((i == 2 && j== 4) || (i == 3 && j == 2)){
-                System.out.println("Forbidden square"); // Black square
-            } else {
+            if(checkIfMiddle(i,j)){
                 for(int k = j-1; k<= j+1; k++){
+
+
+                    /*
                     if(board[i + 1][k].get() != Square.BLACK && board[i][j].get() == Square.RED){
                         if(board[i+1][k].get() == Square.BLUE){
                             wasBlueMatrix[x][0] = i+1;
@@ -238,9 +331,10 @@ public class BoardGameModel {
                         lx++;
                         sumOfMatrix(legalMove);
                     }
+                    */
                 }
             }
-        }
+
 
         if((j == 0) && board[i][j].get() == Square.RED){
             board[i+1][j].set(Square.YELLOW);
@@ -282,7 +376,7 @@ public class BoardGameModel {
         rx = 0;
     }
 
-    public void showMove(int i, int j){
+    public void showMoveSzar(int i, int j){
 
         purgeShown();
 
@@ -313,13 +407,10 @@ public class BoardGameModel {
     public void clickedOnRed(int i, int j){
         clickedRedX = i;
         clickedRedY = j;
-        showMoveAdvanced(i,j);
+        //showMove(i,j);
         System.out.println("Clicked on red");
     }
 
-    public boolean canDo(){ // idk what I wanted to do with this
-        return false;
-    }
 
     public void moveToYellow(int i, int j){
         board[clickedYellowX][clickedYellowY].set(Square.RED);
@@ -346,7 +437,7 @@ public class BoardGameModel {
 
     public void move(int i, int j) {
 
-        showMoveAdvanced(i, j);
+        showMove(i, j);
         /*
         board[i][j].set(
                 switch (board[i][j].get()) {
