@@ -105,7 +105,6 @@ public class BoardGameController {
 
             if(color.equals("yellow")){
                 model.makeMove();
-                model.printColorData();
                 model.currentPhase.set(GamePhase.BLUE);
             }
 
@@ -114,7 +113,8 @@ public class BoardGameController {
             if(color.equals("blue")){
                 //model.moveToBlue(row,col); // TODO: Fixing blue click
                 model.showLegalMoves(row, col, "blue");
-                System.out.println("Blue phase");
+                model.clickedOnBlue(row,col);
+                //System.out.println("Blue phase");
             }
 
             if(color.equals("yellow")){
