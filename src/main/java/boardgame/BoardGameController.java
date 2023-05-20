@@ -1,7 +1,9 @@
 package boardgame;
 
 import boardgame.model.BoardGameModel;
+import boardgame.model.GamePhase;
 import boardgame.model.Square;
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseButton;
@@ -11,8 +13,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 public class BoardGameController {
+
+    public Text text;
 
     @FXML
     private GridPane board;
@@ -25,10 +30,15 @@ public class BoardGameController {
             for (var j = 0; j < board.getColumnCount(); j++) {
                 var square = createSquare(i, j);
                 board.add(square, j, i);
-                model.setupBoard(i,j);
+                model.setupBoard(i, j);
                 model.getColorData();
             }
         }
+        text.textProperty().bind(Bindings.concat("Round of: ", Bindings
+                .when(model.currentPhase.isEqualTo(GamePhase.RED))
+                .then("Red")
+                .otherwise("Blue")));
+
     }
 
 
@@ -87,17 +97,33 @@ public class BoardGameController {
         String color = model.whatColor(row,col);
         //model.showMoveAdvanced(row,col);
 
-        if(color.equals("red")){
-            model.showLegalMoves(row,col);
+        if(model.currentPhase.get() == GamePhase.RED){
+            if(color.equals("red")){
+                model.showLegalMoves(row,col, "red");
+                model.clickedOnRed(row,col);
+            }
+
+            if(color.equals("yellow")){
+                model.makeMove();
+                model.printColorData();
+                model.currentPhase.set(GamePhase.BLUE);
+            }
+
+
+        } else {
+            if(color.equals("blue")){
+                //model.moveToBlue(row,col); // TODO: Fixing blue click
+                model.showLegalMoves(row, col, "blue");
+                System.out.println("Blue phase");
+            }
+
+            if(color.equals("yellow")){
+                model.makeMove();
+                model.currentPhase.set(GamePhase.RED);
+            }
         }
 
-        if(color.equals("yellow")){
-            model.makeMove();
-        }
 
-        if(color.equals("blue")){
-            model.moveToBlue(row,col); // TODO: Fixing blue click
-        }
 
         if(color.equals("no color")){
             System.out.println("bleee");

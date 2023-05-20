@@ -1,7 +1,9 @@
 package boardgame.model;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
@@ -20,6 +22,7 @@ public class BoardGameModel {
     int ly;
     int rx = 0;
     int colorCode;
+    int onRowToShow;
 
     int clickedYellowX = 0;
     int clickedYellowY = 0;
@@ -46,11 +49,13 @@ public class BoardGameModel {
     //public int[][] wasYellow = new int[1][2];
     public int[][] wasBlue = new int[1][2];
 
+    public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
+
     public String whatColor(int i, int j){
         switch (board[i][j].get()){
             case RED:
-                wasRedX = i;
-                wasRedY = j;
+                //wasRedX = i;
+                //wasRedY = j;
                 //System.out.println("Clicked on red at " + wasRedX + " " + wasRedY );
                 return "red";
             case BLUE:
@@ -124,6 +129,7 @@ public class BoardGameModel {
         colorData[toX][toY] = colorData[fromX][fromY];
         colorData[fromX][fromY] = 0;
         getColorData(); // TODO not sure if here appropriate
+        printColorData();
     }
 
     public void printMatrix(int[][] matrix){
@@ -270,13 +276,19 @@ public class BoardGameModel {
         return false;
     }
 
-    public void showLegalMoves(int i, int j){
+    public void showLegalMoves(int i, int j, String player){
         purgeShown();
-        clickedOnRed(i,j);
+        //clickedOnRed(i,j);
         getColorData();
         printColorData();
 
-        int onRowToShow = i+1;
+        if(player.equals("red")) {
+            onRowToShow = i + 1;
+            clickedOnRed(i,j);
+        } else if (player.equals("blue")) {
+            onRowToShow = i - 1;
+
+        }
 
         // if not on first or last column
         if(j-1 < 0){
@@ -291,11 +303,11 @@ public class BoardGameModel {
             board[onRowToShow][j].set(Square.YELLOW);
             board[onRowToShow][j+1].set(Square.YELLOW);
         }
-
-
-
-
     }
+
+
+
+
 
     //public void
 
@@ -405,12 +417,13 @@ public class BoardGameModel {
     }
 
     public void clickedOnRed(int i, int j){
-        clickedRedX = i;
-        clickedRedY = j;
+        wasRedX = i;
+        wasRedY = j;
+        //clickedRedX = i;
+        //clickedRedY = j;
         //showMove(i,j);
-        System.out.println("Clicked on red");
+        System.out.println("Clicked on red at " + wasRedX + " " + wasRedY);
     }
-
 
     public void moveToYellow(int i, int j){
         board[clickedYellowX][clickedYellowY].set(Square.RED);
@@ -432,8 +445,6 @@ public class BoardGameModel {
         System.out.println("Moved to Blue");
         purgeShownAdvanced();
     }
-
-
 
     public void move(int i, int j) {
 
