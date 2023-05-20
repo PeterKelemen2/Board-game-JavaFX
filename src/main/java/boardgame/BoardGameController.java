@@ -38,7 +38,6 @@ public class BoardGameController {
                 .when(model.currentPhase.isEqualTo(GamePhase.RED))
                 .then("Red")
                 .otherwise("Blue")));
-
     }
 
 
@@ -75,7 +74,7 @@ public class BoardGameController {
                 }
         );
         square.getChildren().add(piece);
-        square.setOnMouseClicked(this::dummyClickMethod);
+        square.setOnMouseClicked(this::handleMouseClick);
 
         //square.setOnMouseClicked(this::handleMouseClick);
         //square.setOnMouseClicked(this::handleLegalMoveClick);
@@ -88,14 +87,13 @@ public class BoardGameController {
     }
 
     @FXML
-    private void dummyClickMethod(MouseEvent event){
+    private void handleMouseClick(MouseEvent event){
         var square = (StackPane) event.getSource();
         var row = GridPane.getRowIndex(square);
         var col = GridPane.getColumnIndex(square);
         System.out.printf("Click on square (%d,%d)%n", row, col);
 
         String color = model.whatColor(row,col);
-        //model.showMoveAdvanced(row,col);
 
         if(model.currentPhase.get() == GamePhase.RED){
             if(color.equals("red")){
@@ -111,10 +109,8 @@ public class BoardGameController {
 
         } else {
             if(color.equals("blue")){
-                //model.moveToBlue(row,col); // TODO: Fixing blue click
                 model.showLegalMoves(row, col, "blue");
                 model.clickedOnBlue(row,col);
-                //System.out.println("Blue phase");
             }
 
             if(color.equals("yellow")){
@@ -124,31 +120,8 @@ public class BoardGameController {
         }
 
 
-
         if(color.equals("no color")){
             System.out.println("bleee");
         }
-
     }
-
-    @FXML
-    private void handleMouseClick(MouseEvent event) {
-        var square = (StackPane) event.getSource();
-        var row = GridPane.getRowIndex(square);
-        var col = GridPane.getColumnIndex(square);
-        System.out.printf("Click on square (%d,%d)%n", row, col);
-        //model.move(row, col);
-        //model.showMoveAdvanced(row,col);
-        System.out.println(model.whatColor(row,col));
-    }
-
-    @FXML void handleLegalMoveClick(MouseEvent event){
-        var square = (StackPane) event.getSource();
-        var row = GridPane.getRowIndex(square);
-        var col = GridPane.getColumnIndex(square);
-        System.out.printf("Moved to square (%d,%d)%n", row, col);
-        //model.makeStep(row,col);
-    }
-
-
 }

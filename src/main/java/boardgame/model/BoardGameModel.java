@@ -12,45 +12,22 @@ import javafx.scene.input.*;
 
 public class BoardGameModel {
 
-
     public static int BOARD_SIZE = 7;
-    public int x = 0;
-    public int y = 0;
-    int xx;
-    int yy;
-    int lx;
-    int ly;
-    int rx = 0;
-    int colorCode;
-    int onRowToShow;
 
-    int clickedYellowX = 0;
-    int clickedYellowY = 0;
-    int wasRedX = 0;
-    int wasRedY = 0;
-    int wasBlueX = 0;
-    int wasBlueY = 0;
-    int fromX;
-    int fromY;
+    private int colorCode;
+    private int onRowToShow;
+
+    private int clickedYellowX = 0;
+    private int clickedYellowY = 0;
+    private int wasRedX = 0;
+    private int wasRedY = 0;
+    private int wasBlueX = 0;
+    private int wasBlueY = 0;
+    private int fromX;
+    private int fromY;
     private String color = null;
 
-    int clickedRedX = 0;
-    int clickedRedY = 0;
-
-    boolean blueInitialized = false;
-
-    public int[][] wasBlueMatrix = new int[3][2];
-    public int[][] wasRedMatrix = new int[3][2];
-    public int[][] legalMove = new int[3][2];
-
-    public int sumOfWasBlueMatrix = 0;
-    public int sumOfWasRedMatrix = 0;
-    public int sumOfMatrix = 0;
-
-    public int[][] colorData = new int [6][7];
-
-    //public int[][] wasYellow = new int[1][2];
-    public int[][] wasBlue = new int[1][2];
+    private int[][] colorData = new int [6][7];
 
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
 
@@ -92,7 +69,7 @@ public class BoardGameModel {
         }
     }
 
-    public void manageBoardAfterStepShow(){
+    private void manageBoardAfterStepShow(){
         for(int i = 0; i<6; i++){
             for(int j = 0; j<7; j++){
                 colorCode = colorData[i][j];
@@ -105,7 +82,7 @@ public class BoardGameModel {
         }
     }
 
-    public void printColorData(){
+    private void printColorData(){
         //getColorData();
         for (int i = 0; i < 6; i++){
             System.out.println();
@@ -145,8 +122,8 @@ public class BoardGameModel {
         printColorData();
     }
 
-    int boardIndexWidth = 6;
-    int boardIndexHeight = 5;
+    private int boardIndexWidth = 6;
+    private int boardIndexHeight = 5;
 
     private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_SIZE][BOARD_SIZE];
 
@@ -172,50 +149,6 @@ public class BoardGameModel {
             board[i][j].set(Square.BLUE);
         }
     }
-
-// purgeShown
-//    public void purgeShown(){
-//        nullifyLegalMoveMatrix();
-//
-//        for(int i=0; i<= boardIndexHeight; i++){
-//            for (int j=0; j<=boardIndexWidth; j++){
-//                if(board[i][j].get() == Square.YELLOW){
-//                    board[i][j].set(Square.NONE);
-//                }
-//            }
-//        }
-//
-//        for(int i = 0; i<3; i++){
-//            for (int j = 0; j<2; j++){
-//                sumOfWasBlueMatrix += wasBlueMatrix[i][j];
-//                sumOfWasRedMatrix += wasRedMatrix[i][j];
-//            }
-//        }
-//        if(sumOfWasBlueMatrix != 0){
-//            //printMatrix(wasBlueMatrix);
-//            for(int i=0; i<3; i++){
-//                xx = wasBlueMatrix[i][0];
-//                yy = wasBlueMatrix[i][1];
-//                board[xx][yy].set(Square.BLUE);
-//            }
-//        }
-//
-//        if(sumOfWasRedMatrix != 0){
-//
-//            for(int i=0; i<3; i++){
-//                xx = wasRedMatrix[i][0];
-//                yy = wasRedMatrix[i][1];
-//                board[xx][yy].set(Square.RED);
-//            }
-//        }
-//
-//        x = 0;
-//        lx = 0;
-//        sumOfWasBlueMatrix = 0;
-//        sumOfWasRedMatrix = 0;
-//        sumOfMatrix = 0;
-//
-//    }
 
     private void showIfNotForbidden(int i, int k){
          for(int j = k-1 ; j <= k+1; j++){
@@ -262,9 +195,6 @@ public class BoardGameModel {
     public void clickedOnRed(int i, int j){
         wasRedX = i;
         wasRedY = j;
-        //clickedRedX = i;
-        //clickedRedY = j;
-        //showMove(i,j);
         System.out.println("Clicked on red at " + wasRedX + " " + wasRedY);
     }
 
