@@ -127,7 +127,7 @@ public class BoardGameController {
 
 
         if(color.equals("no color")){
-            System.out.println("bleee");
+            System.out.println("No Color");
         }
     }
 }

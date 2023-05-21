@@ -26,6 +26,7 @@ public class BoardGameModel {
     private int fromX;
     private int fromY;
     private String color = null;
+    private int playerColor = 0;
 
     private int[][] colorData = new int [6][7];
     int countOfRed = 0;
@@ -59,7 +60,9 @@ public class BoardGameModel {
         return "Could not get color.";
     }
 
+    public void checkForGameOver(){
 
+    }
 
     private void checkPartOfMap(int i, int j){
 
@@ -201,15 +204,23 @@ public class BoardGameModel {
         }
     }
 
-    private void showIfNotForbidden(int i, int k){
+    private void showIfNotForbidden(int i, int k, String player){
+        switch(player){
+            case "red" -> {
+                onRowToShow = i+1;
+                playerColor = 1;
+            }
+            case "blue" -> {
+                onRowToShow = i-1;
+                playerColor = 2;
+            }
+        }
+
         for(int j = k-1 ; j <= k+1; j++){
             if((i == 2 && j == 4) || (i == 3 && j == 2)) {
                 board[i][j].set(Square.BLACK);
             } else{
-                if(currentPhase.get() == GamePhase.RED && colorData[i][j] != 1){
-                    board[i][j].set(Square.YELLOW);
-                }
-                if(currentPhase.get() == GamePhase.BLUE && colorData[i][j] !=2){
+                if(colorData[i][j] != playerColor){
                     board[i][j].set(Square.YELLOW);
                 }
             }
@@ -219,57 +230,40 @@ public class BoardGameModel {
     public void showLegalMoves(int i, int j, String player){
         //purgeShown();
         //clickedOnRed(i,j);
-        getColorData();
         //printColorData();
+        getColorData();
 
-        if(player.equals("red")) {
-            onRowToShow = i + 1;
-            clickedOnRed(i,j);
-        } else if (player.equals("blue")) {
-            onRowToShow = i - 1;
+        switch(player){
+            case "red" -> {
+                onRowToShow = i+1;
+                playerColor = 1;
+            }
+            case "blue" -> {
+                onRowToShow = i-1;
+                playerColor = 2;
+            }
         }
 
-        // if not on first or last column
-        if(j-1 < 0 ){
-            if(colorData[onRowToShow][j] != 1 && player.equals("red")){
+        if(j-1 < 0){
+            if(colorData[onRowToShow][j] != playerColor){
                 board[onRowToShow][j].set(Square.YELLOW);
             }
-            if(colorData[onRowToShow][j+1] != 1 && player.equals("red")){
+            if(colorData[onRowToShow][j+1] != playerColor){
                 board[onRowToShow][j+1].set(Square.YELLOW);
             }
-
-            if(colorData[onRowToShow][j] != 2 && player.equals("blue")){
+        }
+        if(j+1 > 6){
+            if(colorData[onRowToShow][j] != playerColor){
                 board[onRowToShow][j].set(Square.YELLOW);
             }
-            if(colorData[onRowToShow][j+1] != 2 && player.equals("blue")){
-                board[onRowToShow][j+1].set(Square.YELLOW);
-            }
-
-        } else if(j+1 > 6){
-            if(colorData[onRowToShow][j] != 1 && player.equals("red")){
-                board[onRowToShow][j].set(Square.YELLOW);
-            }
-            if(colorData[onRowToShow][j-1] != 1 && player.equals("red")){
+            if(colorData[onRowToShow][j-1] != playerColor){
                 board[onRowToShow][j-1].set(Square.YELLOW);
             }
-
-            if(colorData[onRowToShow][j] != 2 && player.equals("blue")){
-                board[onRowToShow][j].set(Square.YELLOW);
-            }
-            if(colorData[onRowToShow][j-1] != 2 && player.equals("blue")){
-                board[onRowToShow][j-1].set(Square.YELLOW);
-            }
-
-        } else {
-            /*
-                board[onRowToShow][j-1].set(Square.YELLOW);
-                board[onRowToShow][j].set(Square.YELLOW);
-                board[onRowToShow][j+1].set(Square.YELLOW);
-            */
-            showIfNotForbidden(onRowToShow,j);
+        }
+        if(j > 0 && j < 6){
+            showIfNotForbidden(onRowToShow,j, player);
         }
     }
-
 
     public void clickedOnRed(int i, int j){
         wasRedX = i;
