@@ -42,6 +42,11 @@
                <Font name="Arial Bold" size="21.0" />
             </font>
          </Text>
+         <Text fx:id="text1" layoutX="30.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Winner: " wrappingWidth="224.13671875">
+            <font>
+               <Font name="Arial Bold" size="21.0" />
+            </font>
+         </Text>
       </children>
    </VBox>
 </HBox>

@@ -28,8 +28,13 @@ public class BoardGameModel {
     private String color = null;
 
     private int[][] colorData = new int [6][7];
+    int countOfRed = 0;
+    int countOfBlue = 0;
+    int nrOfLegalRedMoves = 0;
+    int nrOfLegalBlueMoves = 0;
 
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
+    private boolean isGameOver = false;
 
     public String whatColor(int i, int j){
         switch (board[i][j].get()){
@@ -54,6 +59,52 @@ public class BoardGameModel {
         return "Could not get color.";
     }
 
+
+
+    private void checkPartOfMap(int i, int j){
+
+        if(currentPhase.get() == GamePhase.RED){
+            onRowToShow = i+1;
+
+            if(colorData[i][j] == 1 && i != 5 && (j > 0 && j < 6) &&
+                    (colorData[onRowToShow][j-1]== 0 ||
+                    colorData[onRowToShow][j] == 0 ||
+                    colorData[onRowToShow][j+1] == 0)){
+                nrOfLegalRedMoves++;
+            }
+            if(colorData[i][j] == 1 && i != 5 && j == 0 &&
+                    (colorData[onRowToShow][j] == 0 ||
+                     colorData[onRowToShow][j+1] == 0)){
+                nrOfLegalRedMoves++;
+            }
+            if(colorData[i][j] == 1 && i != 5 && j == 6 &&
+                    (colorData[onRowToShow][j-1] == 0 ||
+                     colorData[onRowToShow][j] == 0)){
+                nrOfLegalRedMoves++;
+            }
+
+        } else if (currentPhase.get() == GamePhase.BLUE){
+            onRowToShow = i-1;
+
+            if(colorData[i][j] == 2 && i != 0 && (j > 0 && j < 6) &&
+                    (colorData[onRowToShow][j-1]== 0 ||
+                     colorData[onRowToShow][j] == 0 ||
+                     colorData[onRowToShow][j+1] == 0)){
+                nrOfLegalBlueMoves++;
+            }
+            if(colorData[i][j] == 2 && i != 0 && j == 0 &&
+                    (colorData[onRowToShow][j] == 0 ||
+                     colorData[onRowToShow][j+1] == 0)){
+                nrOfLegalBlueMoves++;
+            }
+            if(colorData[i][j] == 2 && i != 0 && j == 6 &&
+                    (colorData[onRowToShow][j-1] == 0 ||
+                     colorData[onRowToShow][j] == 0)){
+                nrOfLegalBlueMoves++;
+            }
+        }
+    }
+
     public void getColorData(){
         for(int i = 0; i<6; i++){
             for(int j = 0; j<7; j++){
@@ -69,7 +120,7 @@ public class BoardGameModel {
         }
     }
 
-    private void manageBoardAfterStepShow(){
+    public void manageBoardAfterStepShow(){
         for(int i = 0; i<6; i++){
             for(int j = 0; j<7; j++){
                 colorCode = colorData[i][j];
@@ -151,11 +202,16 @@ public class BoardGameModel {
     }
 
     private void showIfNotForbidden(int i, int k){
-         for(int j = k-1 ; j <= k+1; j++){
+        for(int j = k-1 ; j <= k+1; j++){
             if((i == 2 && j == 4) || (i == 3 && j == 2)) {
                 board[i][j].set(Square.BLACK);
             } else{
-                board[i][j].set(Square.YELLOW);
+                if(currentPhase.get() == GamePhase.RED && colorData[i][j] != 1){
+                    board[i][j].set(Square.YELLOW);
+                }
+                if(currentPhase.get() == GamePhase.BLUE && colorData[i][j] !=2){
+                    board[i][j].set(Square.YELLOW);
+                }
             }
         }
     }
@@ -164,7 +220,7 @@ public class BoardGameModel {
         //purgeShown();
         //clickedOnRed(i,j);
         getColorData();
-        printColorData();
+        //printColorData();
 
         if(player.equals("red")) {
             onRowToShow = i + 1;
@@ -175,13 +231,35 @@ public class BoardGameModel {
 
         // if not on first or last column
         if(j-1 < 0 ){
+            if(colorData[onRowToShow][j] != 1 && player.equals("red")){
+                board[onRowToShow][j].set(Square.YELLOW);
+            }
+            if(colorData[onRowToShow][j+1] != 1 && player.equals("red")){
+                board[onRowToShow][j+1].set(Square.YELLOW);
+            }
 
-            board[onRowToShow][j].set(Square.YELLOW);
-            board[onRowToShow][j+1].set(Square.YELLOW);
+            if(colorData[onRowToShow][j] != 2 && player.equals("blue")){
+                board[onRowToShow][j].set(Square.YELLOW);
+            }
+            if(colorData[onRowToShow][j+1] != 2 && player.equals("blue")){
+                board[onRowToShow][j+1].set(Square.YELLOW);
+            }
 
         } else if(j+1 > 6){
-            board[onRowToShow][j-1].set(Square.YELLOW);
-            board[onRowToShow][j].set(Square.YELLOW);
+            if(colorData[onRowToShow][j] != 1 && player.equals("red")){
+                board[onRowToShow][j].set(Square.YELLOW);
+            }
+            if(colorData[onRowToShow][j-1] != 1 && player.equals("red")){
+                board[onRowToShow][j-1].set(Square.YELLOW);
+            }
+
+            if(colorData[onRowToShow][j] != 2 && player.equals("blue")){
+                board[onRowToShow][j].set(Square.YELLOW);
+            }
+            if(colorData[onRowToShow][j-1] != 2 && player.equals("blue")){
+                board[onRowToShow][j-1].set(Square.YELLOW);
+            }
+
         } else {
             /*
                 board[onRowToShow][j-1].set(Square.YELLOW);
@@ -191,6 +269,7 @@ public class BoardGameModel {
             showIfNotForbidden(onRowToShow,j);
         }
     }
+
 
     public void clickedOnRed(int i, int j){
         wasRedX = i;

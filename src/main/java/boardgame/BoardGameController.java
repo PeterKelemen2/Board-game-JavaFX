@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 public class BoardGameController {
 
     public Text text;
+    public Text winner;
 
     @FXML
     private GridPane board;
@@ -97,24 +98,29 @@ public class BoardGameController {
 
         if(model.currentPhase.get() == GamePhase.RED){
             if(color.equals("red")){
+                model.manageBoardAfterStepShow();
                 model.showLegalMoves(row,col, "red");
                 model.clickedOnRed(row,col);
+
             }
 
             if(color.equals("yellow")){
                 model.makeMove();
+                //model.checkForGameOver();
                 model.currentPhase.set(GamePhase.BLUE);
             }
 
 
         } else {
             if(color.equals("blue")){
+                model.manageBoardAfterStepShow();
                 model.showLegalMoves(row, col, "blue");
                 model.clickedOnBlue(row,col);
             }
 
             if(color.equals("yellow")){
                 model.makeMove();
+                //model.checkForGameOver();
                 model.currentPhase.set(GamePhase.RED);
             }
         }
