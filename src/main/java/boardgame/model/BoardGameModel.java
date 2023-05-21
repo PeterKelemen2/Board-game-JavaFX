@@ -1,9 +1,6 @@
 package boardgame.model;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
@@ -29,10 +26,12 @@ public class BoardGameModel {
     private int playerColor = 0;
 
     private int[][] colorData = new int [6][7];
-    int countOfRed = 0;
-    int countOfBlue = 0;
+    int redCount;
+    int blueCount;
     int nrOfLegalRedMoves = 0;
     int nrOfLegalBlueMoves = 0;
+    private SimpleBooleanProperty redWon = new SimpleBooleanProperty(false);
+    private SimpleBooleanProperty blueWon = new SimpleBooleanProperty(false);
 
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
     private boolean isGameOver = false;
@@ -60,8 +59,110 @@ public class BoardGameModel {
         return "Could not get color.";
     }
 
-    public void checkForGameOver(){
 
+    public BooleanProperty getRedWon(){
+        return redWon;
+    }
+
+    public BooleanProperty getBlueWon(){
+        return blueWon;
+    }
+
+    public void checkForGameOver(){
+        getRedMoveCount();
+        getRedCount();
+        getBlueMoveCount();
+        getBlueCount();
+
+        if(redCount == 0 || nrOfLegalRedMoves == 0){
+            blueWon.set(true);
+            currentPhase.set(GamePhase.OVER);
+            System.out.println(" == Blue won == ");
+        }
+        if(blueCount == 0 || nrOfLegalBlueMoves == 0){
+            redWon.set(true);
+            currentPhase.set(GamePhase.OVER);
+            System.out.println(" == Red won == ");
+        }
+
+    }
+
+    private void getRedMoveCount(){
+        nrOfLegalRedMoves = 0;
+        for(int i=0; i<6; i++){
+            for(int j=0; j<7; j++){
+                if(colorData[i][j] == 1 && i != 5){
+                    if(j == 0){
+                        if(colorData[i+1][0] == 0 ||
+                                colorData[i+1][1] == 0){
+                            nrOfLegalRedMoves++;
+                        }
+                    }
+                    if(j == 6){
+                        if(colorData[i+1][5] == 0 ||
+                                colorData[i+1][6] == 0){
+                            nrOfLegalRedMoves++;
+                        }
+                    }
+                    if(j > 0 && j < 6){
+                        if(colorData[i+1][j-1] == 0 ||
+                                colorData[i+1][j] == 0 ||
+                                colorData[i+1][j+1] == 0){
+                            nrOfLegalRedMoves++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void getBlueMoveCount(){
+        nrOfLegalBlueMoves = 0;
+        for(int i=0; i<6; i++){
+            for(int j=0; j<7; j++){
+                if(colorData[i][j] == 2 && i != 0){
+                    if(j == 0){
+                        if(colorData[i-1][0] == 0 ||
+                                colorData[i-1][1] == 0){
+                            nrOfLegalBlueMoves++;
+                        }
+                    }
+                    if(j == 6){
+                        if(colorData[i-1][5] == 0 ||
+                                colorData[i-1][6] == 0){
+                            nrOfLegalBlueMoves++;
+                        }
+                    }
+                    if(j > 0 && j < 6){
+                        if(colorData[i-1][j-1] == 0 ||
+                                colorData[i-1][j] == 0 ||
+                                colorData[i-1][j+1] == 0){
+                            nrOfLegalBlueMoves++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void getRedCount(){
+        for(int i=0; i<6; i++){
+            for(int j=0; j<7; j++){
+                if(colorData[i][j] == 1){
+                    redCount++;
+                }
+            }
+        }
+    }
+
+    private void getBlueCount(){
+        for(int i=0; i<6; i++){
+            for(int j=0; j<7; j++){
+                if(colorData[i][j] == 2){
+                    blueCount++;
+                }
+            }
+        }
     }
 
     private void checkPartOfMap(int i, int j){

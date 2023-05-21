@@ -35,10 +35,24 @@ public class BoardGameController {
                 model.getColorData();
             }
         }
-        text.textProperty().bind(Bindings.concat("Round of: ", Bindings
+        text.textProperty().bind(Bindings.concat("", Bindings
                 .when(model.currentPhase.isEqualTo(GamePhase.RED))
-                .then("Red")
-                .otherwise("Blue")));
+                .then("Round of: Red")
+                .otherwise(
+                        Bindings.when(model.currentPhase.isEqualTo(GamePhase.BLUE))
+                                .then("Round of: Blue")
+                                .otherwise(Bindings.when(model.currentPhase.isEqualTo(GamePhase.OVER))
+                                        .then("")
+                                        .otherwise(""))
+                )));
+
+        winner.textProperty().bind(Bindings.concat("", Bindings
+                .when(model.getBlueWon())
+                .then("Winner: Blue")
+                .otherwise(
+                        Bindings.when(model.getRedWon())
+                                .then("Winner: Red")
+                                .otherwise(""))));
     }
 
 
@@ -106,7 +120,7 @@ public class BoardGameController {
 
             if(color.equals("yellow")){
                 model.makeMove();
-                //model.checkForGameOver();
+                model.checkForGameOver();
                 model.currentPhase.set(GamePhase.BLUE);
             }
 
@@ -120,7 +134,7 @@ public class BoardGameController {
 
             if(color.equals("yellow")){
                 model.makeMove();
-                //model.checkForGameOver();
+                model.checkForGameOver();
                 model.currentPhase.set(GamePhase.RED);
             }
         }
