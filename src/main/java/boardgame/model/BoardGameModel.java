@@ -71,7 +71,7 @@ public class BoardGameModel {
 
 
 
-    public void checkForGameOver(){
+    public boolean checkForGameOver(){
         getRedMoveCount();
         getRedCount();
         getBlueMoveCount();
@@ -81,13 +81,15 @@ public class BoardGameModel {
             blueWon.set(true);
             currentPhase.set(GamePhase.OVER);
             Logger.info(" == Blue won ==");
+            return true;
         }
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
             redWon.set(true);
             currentPhase.set(GamePhase.OVER);
             Logger.info(" == Red won == ");
+            return true;
         }
-
+        return false;
     }
 
     private void getRedMoveCount(){

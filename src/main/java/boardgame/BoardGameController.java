@@ -6,6 +6,9 @@ import boardgame.model.Square;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -14,7 +17,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.tinylog.Logger;
+
+import java.io.IOException;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardGameController {
 
@@ -22,12 +31,41 @@ public class BoardGameController {
     public Text winner;
     public Text turns;
     private int turnsTaken = 1;
+    private List<Player> playerList = new ArrayList<Player>();
 
     @FXML
     private GridPane board;
 
     private BoardGameModel model = new BoardGameModel();
 
+    @FXML
+    public void backTostart(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/startScreen.fxml"));
+        Parent root = fxmlLoading(loader);
+        Stage stage = (Stage) board.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        Logger.info("Back to the Start Screen");
+    }
+
+    @FXML
+    public void restartGame(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/boardGame.fxml"));
+        Parent root = fxmlLoading(loader);
+        Stage stage = (Stage) board.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        Logger.info("Back to the Start Screen");
+    }
+
+    private Parent fxmlLoading(FXMLLoader loader){
+        try {
+            return loader.load();
+        } catch (IOException e) {
+            Logger.error("Cannot load the FXML file"+"\n"+ e);
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     private void initialize() {
         for (var i = 0; i < board.getRowCount(); i++) {
@@ -133,7 +171,11 @@ public class BoardGameController {
 
             if(color.equals("yellow")){
                 model.makeMove();
-                model.checkForGameOver();
+                if(model.checkForGameOver()){
+                    Player p = new Player(color, turnsTaken, LocalTime.now());
+                    playerList.add(p);
+                }
+                //model.checkForGameOver();
                 model.currentPhase.set(GamePhase.BLUE);
                 turnsTakenText();
             }
