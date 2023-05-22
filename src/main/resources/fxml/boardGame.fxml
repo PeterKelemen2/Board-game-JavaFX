@@ -87,7 +87,7 @@
             </children>
          </AnchorPane>
       </HBox>
-      <Button layoutX="958.0" layoutY="138.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="174.0" text="Restart">
+      <Button layoutX="958.0" layoutY="138.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="51.0" prefWidth="174.0" text="Restart">
          <font>
             <Font size="20.0" />
          </font>
@@ -97,7 +97,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="990.0" layoutY="286.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="107.0" text="Back">
+      <Button layoutX="990.0" layoutY="286.0" mnemonicParsing="false" onAction="#backTostart" prefHeight="45.0" prefWidth="107.0" text="Back">
          <font>
             <Font size="20.0" />
          </font>

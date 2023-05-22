@@ -40,7 +40,7 @@ public class BoardGameController {
 
     @FXML
     public void backTostart(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/startScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startScreen.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) board.getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -50,19 +50,19 @@ public class BoardGameController {
 
     @FXML
     public void restartGame(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/boardGame.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/boardGame.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) board.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("Back to the Start Screen");
+        Logger.info("Restarted game");
     }
 
     private Parent fxmlLoading(FXMLLoader loader){
         try {
             return loader.load();
         } catch (IOException e) {
-            Logger.error("Cannot load the FXML file"+"\n"+ e);
+            Logger.error("Couldn't load the FXML file"+"\n"+ e);
             throw new RuntimeException(e);
         }
     }

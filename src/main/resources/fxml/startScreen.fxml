@@ -36,13 +36,14 @@
             <Font size="72.0" />
          </font>
       </Text>
-      <Button layoutX="474.0" layoutY="358.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="252.0" text="Play" textAlignment="CENTER">
+      <Button fx:id="playButton" layoutX="474.0" layoutY="358.0" mnemonicParsing="false" onAction="#startGame" prefHeight="90.0" prefWidth="252.0" text="Play" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>
          <opaqueInsets>
             <Insets />
-         </opaqueInsets></Button>
+         </opaqueInsets>
+      </Button>
       <Button layoutX="475.0" layoutY="490.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="252.0" text="Scores" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
