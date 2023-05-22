@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.input.*;
+import org.tinylog.Logger;
 
 public class BoardGameModel {
 
@@ -32,6 +33,7 @@ public class BoardGameModel {
     int nrOfLegalBlueMoves = 0;
     private SimpleBooleanProperty redWon = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty blueWon = new SimpleBooleanProperty(false);
+    private int turnsTaken;
 
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
     private boolean isGameOver = false;
@@ -77,12 +79,14 @@ public class BoardGameModel {
         if(redCount == 0 || nrOfLegalRedMoves == 0){
             blueWon.set(true);
             currentPhase.set(GamePhase.OVER);
-            System.out.println(" == Blue won == ");
+            Logger.info(" == Blue won ==");
+            //System.out.println(" == Blue won == ");
         }
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
             redWon.set(true);
             currentPhase.set(GamePhase.OVER);
-            System.out.println(" == Red won == ");
+            Logger.info(" == Red won == ");
+            //System.out.println(" == Red won == ");
         }
 
     }
@@ -260,7 +264,8 @@ public class BoardGameModel {
 
         int toX = clickedYellowX;
         int toY = clickedYellowY;
-        System.out.println("Moved from " + fromX + " " + fromY + " to " + toX + " " + toY);
+        Logger.info("Moved from (" + fromX + " " + fromY + ") to (" + toX + " " + toY + ")");
+        //System.out.println("Moved from " + fromX + " " + fromY + " to " + toX + " " + toY);
 
         if(currentPhase.get() == GamePhase.RED){
             board[toX][toY].set(Square.RED);
@@ -274,7 +279,8 @@ public class BoardGameModel {
 
         manageBoardAfterStepShow();
         //purgeShown();
-        printColorData();
+        //printColorData();
+        turnsTaken++;
     }
 
     private int boardIndexWidth = 6;
@@ -369,13 +375,15 @@ public class BoardGameModel {
     public void clickedOnRed(int i, int j){
         wasRedX = i;
         wasRedY = j;
-        System.out.println("Clicked on red at " + wasRedX + " " + wasRedY);
+        Logger.info("Clicked on red at (" + wasRedX + " " + wasRedY + ")");
+        //System.out.println("Clicked on red at " + wasRedX + " " + wasRedY);
     }
 
     public void clickedOnBlue(int i, int j){
         wasBlueX = i;
         wasBlueY = j;
-        System.out.println("Clicked on blue at " + wasBlueX + " " + wasBlueY);
+        Logger.info("Clicked on red at (" + wasRedX + " " + wasRedY + ")");
+        //System.out.println("Clicked on blue at " + wasBlueX + " " + wasBlueY);
     }
 
     public String toString() {

@@ -6,13 +6,33 @@
     <artifactId>javafx-board-game-example2</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <developers>
+        <developer>
+            <id>ZOKWU1</id>
+            <name>Kelemen Péter</name>
+            <email>peter.kelemen456@gmail.com</email>
+        </developer>
+    </developers>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>boardgame.Main</exec.mainClass>
         <javafx.version>20.0.1</javafx.version>
+        <tinylog.version>2.6.1</tinylog.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog-api</artifactId>
+            <version>${tinylog.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog-impl</artifactId>
+            <version>${tinylog.version}</version>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>

@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import org.tinylog.Logger;
 
 public class BoardGameController {
 
@@ -35,6 +36,8 @@ public class BoardGameController {
                 model.getColorData();
             }
         }
+        Logger.info("Board initialized");
+
         text.textProperty().bind(Bindings.concat("", Bindings
                 .when(model.currentPhase.isEqualTo(GamePhase.RED))
                 .then("Round of: Red")
@@ -106,7 +109,8 @@ public class BoardGameController {
         var square = (StackPane) event.getSource();
         var row = GridPane.getRowIndex(square);
         var col = GridPane.getColumnIndex(square);
-        System.out.printf("Click on square (%d,%d)%n", row, col);
+
+        //System.out.printf("Click on square (%d,%d)%n", row, col);
 
         String color = model.whatColor(row,col);
 
@@ -141,7 +145,8 @@ public class BoardGameController {
 
 
         if(color.equals("no color")){
-            System.out.println("No Color");
+            Logger.info("Clicked on empty square at (" + row + " " + col + ")");
+            //System.out.println("No Color");
         }
     }
 }
