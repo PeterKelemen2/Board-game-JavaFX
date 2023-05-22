@@ -58,6 +58,16 @@ public class BoardGameController {
         Logger.info("Restarted game");
     }
 
+    @FXML
+    public void loadEndScreen(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/endScreen.fxml"));
+        Parent root = fxmlLoading(loader);
+        Stage stage = (Stage) board.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        Logger.info("Restarted game");
+    }
+
     private Parent fxmlLoading(FXMLLoader loader){
         try {
             return loader.load();

@@ -92,7 +92,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="958.0" layoutY="212.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="174.0" text="Scores">
+      <Button layoutX="958.0" layoutY="212.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="51.0" prefWidth="174.0" text="Scores">
          <font>
             <Font size="20.0" />
          </font>
