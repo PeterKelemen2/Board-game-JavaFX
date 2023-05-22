@@ -80,13 +80,11 @@ public class BoardGameModel {
             blueWon.set(true);
             currentPhase.set(GamePhase.OVER);
             Logger.info(" == Blue won ==");
-            //System.out.println(" == Blue won == ");
         }
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
             redWon.set(true);
             currentPhase.set(GamePhase.OVER);
             Logger.info(" == Red won == ");
-            //System.out.println(" == Red won == ");
         }
 
     }
@@ -265,7 +263,6 @@ public class BoardGameModel {
         int toX = clickedYellowX;
         int toY = clickedYellowY;
         Logger.info("Moved from (" + fromX + " " + fromY + ") to (" + toX + " " + toY + ")");
-        //System.out.println("Moved from " + fromX + " " + fromY + " to " + toX + " " + toY);
 
         if(currentPhase.get() == GamePhase.RED){
             board[toX][toY].set(Square.RED);
@@ -376,14 +373,12 @@ public class BoardGameModel {
         wasRedX = i;
         wasRedY = j;
         Logger.info("Clicked on red at (" + wasRedX + " " + wasRedY + ")");
-        //System.out.println("Clicked on red at " + wasRedX + " " + wasRedY);
     }
 
     public void clickedOnBlue(int i, int j){
         wasBlueX = i;
         wasBlueY = j;
         Logger.info("Clicked on red at (" + wasRedX + " " + wasRedY + ")");
-        //System.out.println("Clicked on blue at " + wasBlueX + " " + wasBlueY);
     }
 
     public String toString() {

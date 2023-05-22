@@ -146,7 +146,6 @@ public class BoardGameController {
 
         if(color.equals("no color")){
             Logger.info("Clicked on empty square at (" + row + " " + col + ")");
-            //System.out.println("No Color");
         }
     }
 }
