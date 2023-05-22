@@ -33,7 +33,6 @@ public class BoardGameModel {
     int nrOfLegalBlueMoves = 0;
     private SimpleBooleanProperty redWon = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty blueWon = new SimpleBooleanProperty(false);
-    private int turnsTaken;
 
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
     private boolean isGameOver = false;
@@ -69,6 +68,8 @@ public class BoardGameModel {
     public BooleanProperty getBlueWon(){
         return blueWon;
     }
+
+
 
     public void checkForGameOver(){
         getRedMoveCount();
@@ -277,7 +278,6 @@ public class BoardGameModel {
         manageBoardAfterStepShow();
         //purgeShown();
         //printColorData();
-        turnsTaken++;
     }
 
     private int boardIndexWidth = 6;

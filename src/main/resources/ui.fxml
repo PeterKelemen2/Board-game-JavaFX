@@ -47,6 +47,11 @@
                <Font size="20.0" />
             </font>
          </Text>
+         <Text id="turnsId" fx:id="turns" layoutX="30.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turns taken:" wrappingWidth="224.13671875">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Text>
       </children>
    </VBox>
 </HBox>

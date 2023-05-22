@@ -20,6 +20,8 @@ public class BoardGameController {
 
     public Text text;
     public Text winner;
+    public Text turns;
+    private int turnsTaken = 1;
 
     @FXML
     private GridPane board;
@@ -56,6 +58,8 @@ public class BoardGameController {
                         Bindings.when(model.getRedWon())
                                 .then("Winner: Red")
                                 .otherwise(""))));
+
+        turns.setText("Turns taken: " + turnsTaken);
     }
 
 
@@ -104,6 +108,11 @@ public class BoardGameController {
         return square;
     }
 
+    private void turnsTakenText(){
+        turnsTaken++;
+        turns.setText("Turns taken: " + turnsTaken);
+    }
+
     @FXML
     private void handleMouseClick(MouseEvent event){
         var square = (StackPane) event.getSource();
@@ -126,6 +135,7 @@ public class BoardGameController {
                 model.makeMove();
                 model.checkForGameOver();
                 model.currentPhase.set(GamePhase.BLUE);
+                turnsTakenText();
             }
 
 
@@ -140,6 +150,7 @@ public class BoardGameController {
                 model.makeMove();
                 model.checkForGameOver();
                 model.currentPhase.set(GamePhase.RED);
+                turnsTakenText();
             }
         }
 
