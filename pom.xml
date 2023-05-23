@@ -27,6 +27,7 @@
         <maven.surefire.version>3.0.0-M6</maven.surefire.version>
         <jacoco.version>0.8.8</jacoco.version>
         <tinylog.version>2.6.1</tinylog.version>
+        <jackson.version>2.14.2</jackson.version>
         <exec.mainClass>boardgame.Main</exec.mainClass>
     </properties>
     <dependencies>
@@ -65,7 +66,20 @@
             <artifactId>tinylog-api</artifactId>
             <version>2.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

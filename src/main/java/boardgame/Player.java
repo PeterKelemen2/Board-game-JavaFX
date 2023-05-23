@@ -7,16 +7,12 @@ import java.time.format.DateTimeFormatter;
 public class Player {
     private String name;
     private int score;
-    private DateTimeFormatter formatter;
-    private LocalTime date;
 
 
-
-    public Player(String name, int score, LocalTime date) {
+    public Player(String name, int score) {
         this.name = name;
         this.score = score;
 
-        formatter = DateTimeFormatter.ofPattern("yyy.MM.dd HH:mm:ss");
     }
 
     public Player() {
@@ -38,17 +34,10 @@ public class Player {
         this.score = score;
     }
 
-    public LocalTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalTime date) {
-        this.date = date;
-    }
 
     @Override
     public String toString() {
-        return "Player won in " + score + " turns (" + LocalDateTime.now().format(formatter) + ")";
+        return name + ":" + score;
     }
 }
 

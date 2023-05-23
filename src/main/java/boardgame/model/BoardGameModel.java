@@ -1,12 +1,19 @@
 package boardgame.model;
 
+import boardgame.Player;
 import javafx.beans.property.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.input.*;
 import org.tinylog.Logger;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardGameModel {
 
@@ -25,6 +32,13 @@ public class BoardGameModel {
     private int fromY;
     private String color = null;
     private int playerColor = 0;
+    private int turnsTaken;
+    public Player p;
+    public List<Player> playerList = new ArrayList<>();
+
+    private String redName;
+    private String blueName;
+
 
     private int[][] colorData = new int [6][7];
     int redCount;
@@ -36,6 +50,7 @@ public class BoardGameModel {
 
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
     private boolean isGameOver = false;
+
 
     public String whatColor(int i, int j){
         switch (board[i][j].get()){
@@ -67,9 +82,20 @@ public class BoardGameModel {
 
     public BooleanProperty getBlueWon(){
         return blueWon;
+
     }
 
+    public void setTurnsTaken(int turnsTaken) {
+        this.turnsTaken = turnsTaken;
+    }
 
+    public void setRedName(String redName) {
+        this.redName = redName;
+    }
+
+    public void setBlueName(String blueName) {
+        this.blueName = blueName;
+    }
 
     public boolean checkForGameOver(){
         getRedMoveCount();
@@ -80,16 +106,26 @@ public class BoardGameModel {
         if(redCount == 0 || nrOfLegalRedMoves == 0){
             blueWon.set(true);
             currentPhase.set(GamePhase.OVER);
+            p = new Player(blueName, turnsTaken);
             Logger.info(" == Blue won ==");
             return true;
         }
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
             redWon.set(true);
             currentPhase.set(GamePhase.OVER);
+            p = new Player(redName, turnsTaken);
             Logger.info(" == Red won == ");
             return true;
         }
         return false;
+    }
+
+    public List<Player> getPlayerList(){
+        return playerList;
+    }
+
+    public Player getP() {
+        return p;
     }
 
     private void getRedMoveCount(){

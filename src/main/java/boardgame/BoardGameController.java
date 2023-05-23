@@ -3,6 +3,14 @@ package boardgame;
 import boardgame.model.BoardGameModel;
 import boardgame.model.GamePhase;
 import boardgame.model.Square;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXML;
@@ -21,10 +29,14 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+//import org.json.simple.JSONObject;
 import org.tinylog.Logger;
 
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,19 +46,61 @@ public class BoardGameController {
     public Text text;
     public Text winner;
     public Text turns;
+
+    private String redNameString;
+    private String blueNameString;
+    private int turnsTaken = 1;
+
     @FXML
     public TextField redName;
     @FXML
     public TextField blueName;
-    private String redNameString;
-    private String blueNameString;
-    private int turnsTaken = 1;
-    private List<Player> playerList = new ArrayList<Player>();
-
     @FXML
     private GridPane board;
 
     private BoardGameModel model = new BoardGameModel();
+
+    private String path = "/result.json";
+
+    @FXML
+    private void writeResult()  {
+        var objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+        var fileName="results.json";
+        String absolutePath = Path.of("").toAbsolutePath().toString();
+        String absoluteFilePath = absolutePath + File.separator + fileName;
+        var file = new File(absoluteFilePath);
+        List<Player> playerList;
+
+        if (file.exists()) {
+            try {
+                playerList = objectMapper.readValue(file, new TypeReference<>() {});
+            } catch (IOException e) {
+                Logger.error("Cannot create the JSON file"+"\n"+ e);
+                throw new RuntimeException("Cannot read the JSON file: " + e.getMessage());
+            }
+        }
+        else {
+            Logger.debug("Created new JSON file to store match history");
+            playerList = new ArrayList<>();
+        }
+
+        try {
+            var writer = new FileWriter(absoluteFilePath);
+            ArrayNode rootArrayNode = objectMapper.createArrayNode();
+            for (Player player : playerList) {
+                ObjectNode stateNode = objectMapper.valueToTree(player);
+                rootArrayNode.add(stateNode);
+            }
+            Player newPlayer = model.getP();
+            ObjectNode newEndGameStateNode = objectMapper.valueToTree(newPlayer);
+            rootArrayNode.add(newEndGameStateNode);
+            objectMapper.writeValue(writer, rootArrayNode);
+            Logger.info("Added game to match history");
+        } catch (IOException e) {
+            Logger.error("Cannot write the JSON file"+"\n"+ e);
+            throw new RuntimeException("Cannot write JSON file: " + e.getMessage());
+        }
+    }
 
     @FXML
     public void backTostart(){
@@ -89,6 +143,16 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
+        Player testPlayer = new Player("RedName", turnsTaken);
+
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+
+        gson.toJson(testPlayer);
+
+
+
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
                 var square = createSquare(i, j);
@@ -103,6 +167,7 @@ public class BoardGameController {
         redName.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if(!newValue){
                 redNameString = redName.getText();
+                model.setRedName(redNameString);
                 Logger.info("Red player name set: " + redNameString);
             }
         });
@@ -110,6 +175,7 @@ public class BoardGameController {
         blueName.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if(!newValue){
                 blueNameString = blueName.getText();
+                model.setBlueName(blueNameString);
                 Logger.info("Blue player name set: " + blueNameString);
             }
         });
@@ -135,6 +201,8 @@ public class BoardGameController {
 
         turns.setText("Turns taken: " + turnsTaken);
     }
+
+
 
     public StackPane createSquare(int i, int j) {
 
@@ -172,6 +240,7 @@ public class BoardGameController {
 
     private void turnsTakenText(){
         turnsTaken++;
+        model.setTurnsTaken(turnsTaken);
         turns.setText("Turns taken: " + turnsTaken);
     }
 
@@ -194,8 +263,8 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    Player p = new Player(color, turnsTaken, LocalTime.now());
-                    playerList.add(p);
+                    Player p = new Player(color, turnsTaken);
+                    //writeResult();
                     Logger.info(p);
                 }
                 //model.checkForGameOver();
@@ -214,8 +283,8 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    Player p = new Player(color, turnsTaken, LocalTime.now());
-                    playerList.add(p);
+                    Player p = new Player(color, turnsTaken);
+                    //writeResult();
                     Logger.info(p);
                 }
                 //model.checkForGameOver();
