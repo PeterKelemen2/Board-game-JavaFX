@@ -1,0 +1,5 @@
+05-23 18:36:35 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-23 18:36:35 [INFO] boardgame.StartScreenController.startGame() - Game Started
+05-23 18:36:38 [INFO] boardgame.BoardGameController.backTostart() - Back to the Start Screen
+05-23 18:36:38 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-23 18:36:38 [INFO] boardgame.StartScreenController.startGame() - Game Started

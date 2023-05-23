@@ -33,9 +33,7 @@ import javafx.stage.Stage;
 import org.tinylog.Logger;
 
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -62,45 +60,21 @@ public class BoardGameController {
 
     private String path = "/result.json";
 
-    @FXML
-    private void writeResult()  {
-        var objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-        var fileName="results.json";
-        String absolutePath = Path.of("").toAbsolutePath().toString();
-        String absoluteFilePath = absolutePath + File.separator + fileName;
-        var file = new File(absoluteFilePath);
-        List<Player> playerList;
+    public void jsonWriterGSON(){
+        Player testPlayer = new Player("RedName", turnsTaken);
 
-        if (file.exists()) {
-            try {
-                playerList = objectMapper.readValue(file, new TypeReference<>() {});
-            } catch (IOException e) {
-                Logger.error("Cannot create the JSON file"+"\n"+ e);
-                throw new RuntimeException("Cannot read the JSON file: " + e.getMessage());
-            }
-        }
-        else {
-            Logger.debug("Created new JSON file to store match history");
-            playerList = new ArrayList<>();
-        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try {
-            var writer = new FileWriter(absoluteFilePath);
-            ArrayNode rootArrayNode = objectMapper.createArrayNode();
-            for (Player player : playerList) {
-                ObjectNode stateNode = objectMapper.valueToTree(player);
-                rootArrayNode.add(stateNode);
-            }
-            Player newPlayer = model.getP();
-            ObjectNode newEndGameStateNode = objectMapper.valueToTree(newPlayer);
-            rootArrayNode.add(newEndGameStateNode);
-            objectMapper.writeValue(writer, rootArrayNode);
-            Logger.info("Added game to match history");
+        String json = gson.toJson(testPlayer);
+
+        try (FileWriter writer = new FileWriter("output.json")) {
+            gson.toJson(testPlayer, writer);
+            Logger.info("JSON file created successfully!");
         } catch (IOException e) {
-            Logger.error("Cannot write the JSON file"+"\n"+ e);
-            throw new RuntimeException("Cannot write JSON file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
 
     @FXML
     public void backTostart(){
@@ -143,15 +117,8 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
-        Player testPlayer = new Player("RedName", turnsTaken);
 
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
-
-        gson.toJson(testPlayer);
-
-
+        jsonWriterGSON();
 
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
