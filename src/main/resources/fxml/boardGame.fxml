@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -102,5 +103,15 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <TextField fx:id="redName" layoutX="901.0" layoutY="439.0"  prefHeight="36.0" prefWidth="283.0" promptText="Red Player Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="blueName" layoutX="900.0" layoutY="497.0"  prefHeight="39.0" prefWidth="283.0" promptText="Blue Player Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
