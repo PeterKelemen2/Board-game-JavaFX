@@ -1,5 +1,7 @@
-05-23 18:36:35 [INFO] boardgame.BoardGameController.initialize() - Board initialized
-05-23 18:36:35 [INFO] boardgame.StartScreenController.startGame() - Game Started
-05-23 18:36:38 [INFO] boardgame.BoardGameController.backTostart() - Back to the Start Screen
-05-23 18:36:38 [INFO] boardgame.BoardGameController.initialize() - Board initialized
-05-23 18:36:38 [INFO] boardgame.StartScreenController.startGame() - Game Started
+05-24 16:52:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: RedName Score:1
+05-24 16:52:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: BlueName Score:1
+05-24 16:52:36 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-24 16:52:36 [INFO] boardgame.StartScreenController.startGame() - Game Started
+05-24 16:52:37 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Name: RedName Score:1
+05-24 16:52:37 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Name: BlueName Score:1
+05-24 16:52:37 [INFO] boardgame.BoardGameController.loadEndScreen() - Restarted game

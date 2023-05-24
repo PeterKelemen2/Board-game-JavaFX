@@ -2,15 +2,9 @@ package boardgame;
 
 import boardgame.model.BoardGameModel;
 import boardgame.model.GamePhase;
-import boardgame.model.Square;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
 import javafx.fxml.FXML;
@@ -18,8 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -27,15 +19,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 //import org.json.simple.JSONObject;
 import org.tinylog.Logger;
 
 
 import java.io.*;
-import java.nio.file.Path;
-import java.time.LocalTime;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,23 +48,38 @@ public class BoardGameController {
 
     private BoardGameModel model = new BoardGameModel();
 
-    private String path = "/result.json";
+    private String path = "output.json";
+
+    private List<Game> gameList = new ArrayList<>();
 
     public void jsonWriterGSON(){
-        Player testPlayer = new Player("RedName", turnsTaken);
-
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        String json = gson.toJson(testPlayer);
+        String json = gson.toJson(gameList);
 
-        try (FileWriter writer = new FileWriter("output.json")) {
-            gson.toJson(testPlayer, writer);
+        try (FileWriter writer = new FileWriter(path)) {
+            gson.toJson(gameList, writer);
             Logger.info("JSON file created successfully!");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void jsonReaderGSON(){
+        Gson gson = new Gson();
+
+        try (Reader reader = new FileReader(path)) {
+            Type listType = new TypeToken<List<Game>>(){}.getType();
+
+            List<Game> gameList = gson.fromJson(reader, listType);
+
+            for (Game game : gameList) {
+                Logger.info("Name: " + game.getName() + ", Score:" + game.getScore());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void backTostart(){
@@ -118,7 +123,8 @@ public class BoardGameController {
     @FXML
     private void initialize() {
 
-        jsonWriterGSON();
+        // jsonWriterGSON();
+        jsonReaderGSON();
 
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
@@ -224,17 +230,16 @@ public class BoardGameController {
                 model.manageBoardAfterStepShow();
                 model.showLegalMoves(row,col, "red");
                 model.clickedOnRed(row,col);
-
             }
 
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    Player p = new Player(color, turnsTaken);
-                    //writeResult();
-                    Logger.info(p);
+                    Game game = new Game(color, turnsTaken);
+                    gameList.add(game);
+                    Logger.info(game);
+                    jsonWriterGSON();
                 }
-                //model.checkForGameOver();
                 model.currentPhase.set(GamePhase.BLUE);
                 turnsTakenText();
             }
@@ -250,11 +255,11 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    Player p = new Player(color, turnsTaken);
-                    //writeResult();
-                    Logger.info(p);
+                    Game game = new Game(color, turnsTaken);
+                    gameList.add(game);
+                    Logger.info(game);
+                    jsonWriterGSON();
                 }
-                //model.checkForGameOver();
                 model.currentPhase.set(GamePhase.RED);
                 turnsTakenText();
             }

@@ -1,4 +1,10 @@
-{
-  "name": "RedName",
-  "score": 1
-}
+[
+  {
+    "name": "RedName",
+    "score": 1
+  },
+  {
+    "name": "BlueName",
+    "score": 1
+  }
+]

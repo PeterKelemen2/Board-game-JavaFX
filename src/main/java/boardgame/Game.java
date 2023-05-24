@@ -1,21 +1,17 @@
 package boardgame;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
-public class Player {
+public class Game {
     private String name;
     private int score;
 
 
-    public Player(String name, int score) {
+    public Game(String name, int score) {
         this.name = name;
         this.score = score;
 
     }
 
-    public Player() {
+    public Game() {
     }
 
     public String getName() {

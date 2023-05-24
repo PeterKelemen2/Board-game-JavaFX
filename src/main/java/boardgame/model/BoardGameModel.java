@@ -1,17 +1,9 @@
 package boardgame.model;
 
-import boardgame.Player;
+import boardgame.Game;
 import javafx.beans.property.*;
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.paint.Color;
-import javafx.scene.input.*;
 import org.tinylog.Logger;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +25,8 @@ public class BoardGameModel {
     private String color = null;
     private int playerColor = 0;
     private int turnsTaken;
-    public Player p;
-    public List<Player> playerList = new ArrayList<>();
+    public Game p;
+    public List<Game> gameList = new ArrayList<>();
 
     private String redName;
     private String blueName;
@@ -55,9 +47,6 @@ public class BoardGameModel {
     public String whatColor(int i, int j){
         switch (board[i][j].get()){
             case RED:
-                //wasRedX = i;
-                //wasRedY = j;
-                //System.out.println("Clicked on red at " + wasRedX + " " + wasRedY );
                 return "red";
             case BLUE:
                 wasBlueX = i;
@@ -106,25 +95,25 @@ public class BoardGameModel {
         if(redCount == 0 || nrOfLegalRedMoves == 0){
             blueWon.set(true);
             currentPhase.set(GamePhase.OVER);
-            p = new Player(blueName, turnsTaken);
+            p = new Game(blueName, turnsTaken);
             Logger.info(" == Blue won ==");
             return true;
         }
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
             redWon.set(true);
             currentPhase.set(GamePhase.OVER);
-            p = new Player(redName, turnsTaken);
+            p = new Game(redName, turnsTaken);
             Logger.info(" == Red won == ");
             return true;
         }
         return false;
     }
 
-    public List<Player> getPlayerList(){
-        return playerList;
+    public List<Game> getPlayerList(){
+        return gameList;
     }
 
-    public Player getP() {
+    public Game getP() {
         return p;
     }
 
@@ -206,50 +195,6 @@ public class BoardGameModel {
         }
     }
 
-    private void checkPartOfMap(int i, int j){
-
-        if(currentPhase.get() == GamePhase.RED){
-            onRowToShow = i+1;
-
-            if(colorData[i][j] == 1 && i != 5 && (j > 0 && j < 6) &&
-                    (colorData[onRowToShow][j-1]== 0 ||
-                    colorData[onRowToShow][j] == 0 ||
-                    colorData[onRowToShow][j+1] == 0)){
-                nrOfLegalRedMoves++;
-            }
-            if(colorData[i][j] == 1 && i != 5 && j == 0 &&
-                    (colorData[onRowToShow][j] == 0 ||
-                     colorData[onRowToShow][j+1] == 0)){
-                nrOfLegalRedMoves++;
-            }
-            if(colorData[i][j] == 1 && i != 5 && j == 6 &&
-                    (colorData[onRowToShow][j-1] == 0 ||
-                     colorData[onRowToShow][j] == 0)){
-                nrOfLegalRedMoves++;
-            }
-
-        } else if (currentPhase.get() == GamePhase.BLUE){
-            onRowToShow = i-1;
-
-            if(colorData[i][j] == 2 && i != 0 && (j > 0 && j < 6) &&
-                    (colorData[onRowToShow][j-1]== 0 ||
-                     colorData[onRowToShow][j] == 0 ||
-                     colorData[onRowToShow][j+1] == 0)){
-                nrOfLegalBlueMoves++;
-            }
-            if(colorData[i][j] == 2 && i != 0 && j == 0 &&
-                    (colorData[onRowToShow][j] == 0 ||
-                     colorData[onRowToShow][j+1] == 0)){
-                nrOfLegalBlueMoves++;
-            }
-            if(colorData[i][j] == 2 && i != 0 && j == 6 &&
-                    (colorData[onRowToShow][j-1] == 0 ||
-                     colorData[onRowToShow][j] == 0)){
-                nrOfLegalBlueMoves++;
-            }
-        }
-    }
-
     public void getColorData(){
         for(int i = 0; i<6; i++){
             for(int j = 0; j<7; j++){
@@ -276,17 +221,6 @@ public class BoardGameModel {
                 }
             }
         }
-    }
-
-    private void printColorData(){
-        //getColorData();
-        for (int i = 0; i < 6; i++){
-            System.out.println();
-            for(int j = 0; j < 7; j++){
-                System.out.print(colorData[i][j] + " ");
-            }
-        }
-        System.out.println();
     }
 
     public void makeMove(){
