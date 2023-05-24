@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="800" prefWidth="1200" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.EndScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="800.0" stroke="BLACK" strokeType="INSIDE" width="1200.0">
@@ -37,9 +36,9 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <VBox cacheShape="false" layoutX="244.0" layoutY="176.0" prefHeight="540.0" prefWidth="673.0" spacing="20.0">
+      <VBox cacheShape="false" layoutX="1.0" layoutY="176.0" prefHeight="540.0" prefWidth="1194.0" spacing="20.0">
          <children>
-            <Text id="scoreTextId" fx:id="scoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="672.5654296875">
+            <Text id="scoreTextId" fx:id="scoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="1196.5654296875">
                <font>
                   <Font size="35.0" />
                </font>
@@ -54,7 +53,7 @@
             <Font size="64.0" />
          </font>
       </Text>
-      <Button layoutX="553.0" layoutY="745.0" mnemonicParsing="false" onAction="#backToStart" prefHeight="33.0" prefWidth="95.0" text="Back">
+      <Button layoutX="553.0" layoutY="745.0" mnemonicParsing="false" onAction="#backToStart" prefHeight="33.0" prefWidth="95.0" stylesheets="@../boardGame.css" text="Back">
          <font>
             <Font size="16.0" />
          </font>

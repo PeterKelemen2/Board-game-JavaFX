@@ -1,0 +1,38 @@
+
+.button{
+    -fx-background-color: #f1f1f1;
+    -fx-background-radius: 7px;
+}
+
+.button:pressed{
+    -fx-background-color: #939393;
+}
+
+.button:hover{
+    -fx-background-color: #ffffff;
+}
+
+.text-field{
+    -fx-background-radius: 7px;
+}
+
+@font-face{
+    font-family: "Ubuntu";
+    src: url("/fonts/Ubuntu-Medium.ttf");
+}
+
+.text{
+    -fx-font-family: "Ubuntu";
+    -fx-font-size: 20px;
+}
+
+.turn-text{
+    -fx-font-weight: bold;
+    -fx-font-family: "Ubuntu";
+    -fx-font-size: 20px;
+}
+
+.start-text{
+    -fx-font-size: 50px;
+}
+

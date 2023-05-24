@@ -30,13 +30,13 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="504.0" layoutX="361.0" layoutY="145.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" styleClass="startScreen" width="479.0" />
+      <Rectangle id="rectangle" arcHeight="5.0" arcWidth="5.0" height="504.0" layoutX="361.0" layoutY="145.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" styleClass="startScreen" width="479.0" />
       <Text layoutX="233.0" layoutY="246.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Board Game" textAlignment="CENTER" wrappingWidth="734.490234375">
          <font>
             <Font size="72.0" />
          </font>
       </Text>
-      <Button fx:id="playButton" layoutX="474.0" layoutY="358.0" mnemonicParsing="false" onAction="#startGame" prefHeight="90.0" prefWidth="252.0" text="Play" textAlignment="CENTER">
+      <Button fx:id="playButton" layoutX="474.0" layoutY="358.0" mnemonicParsing="false" onAction="#startGame" prefHeight="90.0" prefWidth="252.0" style="-fx-font-size: 35;" styleClass="start-text" stylesheets="@../boardGame.css" text="Play" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>
@@ -44,7 +44,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button layoutX="475.0" layoutY="490.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="90.0" prefWidth="252.0" text="Scores" textAlignment="CENTER">
+      <Button layoutX="475.0" layoutY="490.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="90.0" prefWidth="252.0" style="-fx-font-size: 35;" styleClass="start-text" stylesheets="@../boardGame.css" text="Scores" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>

@@ -31,6 +31,11 @@ import java.util.List;
 
 public class BoardGameController {
 
+    private Color customBlue = Color.rgb(47,56,174);
+    private Color customRed = Color.rgb(217,25,38);
+    private Color customYellow = Color.rgb(251,202,4);
+
+
     public Text text;
     public Text winner;
     public Text turns;
@@ -133,6 +138,8 @@ public class BoardGameController {
                 model.getColorData();
             }
         }
+
+        text.setFill(customRed);
         Logger.info("Board initialized");
 
 
@@ -191,11 +198,12 @@ public class BoardGameController {
                     protected Paint computeValue() {
                         return switch (model.squareProperty(i, j).get()) {
                             case NONE -> Color.TRANSPARENT;
-                            case RED -> Color.RED;
-                            case BLUE -> Color.BLUE;
-                            case YELLOW -> Color.YELLOWGREEN;
+                            case RED -> customRed;
+                            case BLUE -> customBlue;
+                            case YELLOW -> customYellow;
                             case BLACK -> Color.BLACK;
                             case ORANGERED -> Color.ORANGERED;
+
                         };
                     }
                 }
@@ -244,8 +252,8 @@ public class BoardGameController {
                 }
                 model.currentPhase.set(GamePhase.BLUE);
                 turnsTakenText();
+                text.setFill(customBlue);
             }
-
 
         } else {
             if(color.equals("blue")){
@@ -267,6 +275,7 @@ public class BoardGameController {
                 }
                 model.currentPhase.set(GamePhase.RED);
                 turnsTakenText();
+                text.setFill(customRed);
             }
         }
 
