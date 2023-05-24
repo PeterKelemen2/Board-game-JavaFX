@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
@@ -24,11 +25,16 @@ public class EndScreenController {
     private String path = "output.json";
     //List <Game> gameList = new ArrayList<>();
     public Text scoreText;
+    private String alataPath = "fonts/Alata-Regular.ttf";
 
     @FXML
     private void initialize(){
+        Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
+        System.out.println(alataFont);
         scoreText.setText("");
         jsonReaderGSON();
+        //scoreText.setFont(alataFont);
+
     }
 
     public void jsonReaderGSON(){

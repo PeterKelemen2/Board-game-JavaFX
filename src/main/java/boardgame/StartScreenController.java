@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 
@@ -13,6 +15,13 @@ import java.io.IOException;
 
 
 public class StartScreenController {
+
+    private String alataPath = "fonts/Alata-Regular.ttf";
+
+    @FXML
+    private void initialize(){
+        Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
+    }
 
     @FXML
     public void startGame(ActionEvent actionEvent){

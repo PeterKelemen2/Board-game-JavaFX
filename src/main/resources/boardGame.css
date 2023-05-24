@@ -2,6 +2,7 @@
 .button{
     -fx-background-color: #f1f1f1;
     -fx-background-radius: 7px;
+    -fx-padding: 10px;
 }
 
 .button:pressed{
@@ -17,22 +18,42 @@
 }
 
 @font-face{
-    font-family: "Ubuntu";
-    src: url("/fonts/Ubuntu-Medium.ttf");
+    font-family: "Alata";
+    src: url('/fonts/Alata-Regular.ttf');
+}
+
+#scoreTextId{
+    -fx-font-family: "Alata";
+    -fx-font-size: 30px;
 }
 
 .text{
-    -fx-font-family: "Ubuntu";
-    -fx-font-size: 20px;
+    -fx-font-family: "Alata";
 }
 
-.turn-text{
-    -fx-font-weight: bold;
-    -fx-font-family: "Ubuntu";
+.basic-text{
+    -fx-font-family: "Alata";
     -fx-font-size: 20px;
 }
 
 .start-text{
-    -fx-font-size: 50px;
+    -fx-font-family: "Alata";
+    -fx-font-size: 35px;
 }
 
+.round-text{
+    -fx-font-weight: bold;
+    -fx-font-family: "Alata";
+    -fx-font-size: 30px;
+    -fx-padding: 20px;
+}
+
+.button-text{
+    -fx-font-family: "Alata";
+    -fx-font-size: 20px;
+
+}
+
+.header-text{
+    -fx-font-family: "Alata";
+}

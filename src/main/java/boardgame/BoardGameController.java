@@ -18,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 //import org.json.simple.JSONObject;
@@ -166,7 +167,7 @@ public class BoardGameController {
                         Bindings.when(model.currentPhase.isEqualTo(GamePhase.BLUE))
                                 .then("Round of: Blue")
                                 .otherwise(Bindings.when(model.currentPhase.isEqualTo(GamePhase.OVER))
-                                        .then("")
+                                        .then("Game Over")
                                         .otherwise(""))
                 )));
 
@@ -253,6 +254,10 @@ public class BoardGameController {
                 model.currentPhase.set(GamePhase.BLUE);
                 turnsTakenText();
                 text.setFill(customBlue);
+                if(model.checkForGameOver()){
+                    text.setFill(Color.rgb(0,0,0));
+                    winner.setFill(customBlue);
+                }
             }
 
         } else {
@@ -276,6 +281,10 @@ public class BoardGameController {
                 model.currentPhase.set(GamePhase.RED);
                 turnsTakenText();
                 text.setFill(customRed);
+                if(model.checkForGameOver()){
+                    text.setFill(Color.rgb(0,0,0));
+                    winner.setFill(customRed);
+                }
             }
         }
 
