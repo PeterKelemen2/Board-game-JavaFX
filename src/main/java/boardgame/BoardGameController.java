@@ -243,6 +243,7 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
+                    text.setFill(Color.rgb(0,0,0));
                     if(redNameString == null){
                         redNameString = "Unknown";
                     }
@@ -254,10 +255,6 @@ public class BoardGameController {
                 model.currentPhase.set(GamePhase.BLUE);
                 turnsTakenText();
                 text.setFill(customBlue);
-                if(model.checkForGameOver()){
-                    text.setFill(Color.rgb(0,0,0));
-                    winner.setFill(customBlue);
-                }
             }
 
         } else {
@@ -270,6 +267,7 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
+                    text.setFill(Color.rgb(0,0,0));
                     if(blueNameString == null){
                         blueNameString = "Unknown";
                     }
@@ -281,13 +279,9 @@ public class BoardGameController {
                 model.currentPhase.set(GamePhase.RED);
                 turnsTakenText();
                 text.setFill(customRed);
-                if(model.checkForGameOver()){
-                    text.setFill(Color.rgb(0,0,0));
-                    winner.setFill(customRed);
-                }
+
             }
         }
-
 
         if(color.equals("no color")){
             Logger.info("Clicked on empty square at (" + row + " " + col + ")");

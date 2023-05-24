@@ -1,8 +1,38 @@
-05-24 21:17:15 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
-05-24 21:17:15 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
-05-24 21:17:17 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 36 turns
-05-24 21:17:17 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 27 turns
-05-24 21:17:17 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 41 turns
-05-24 21:17:17 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 40 turns
-05-24 21:17:17 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 35 turns
-05-24 21:17:17 [INFO] boardgame.StartScreenController.loadEndScreen() - End Scene loaded
+05-24 21:27:35 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
+05-24 21:27:35 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Blue Player, Score:28
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Second Player, Score:245
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Third Player, Score:123
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:36
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:27
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:41
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:40
+05-24 21:27:36 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:36 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-24 21:27:36 [INFO] boardgame.StartScreenController.startGame() - Game Started
+05-24 21:27:38 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 36 turns
+05-24 21:27:38 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 27 turns
+05-24 21:27:38 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 41 turns
+05-24 21:27:38 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 40 turns
+05-24 21:27:38 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 35 turns
+05-24 21:27:38 [INFO] boardgame.BoardGameController.loadEndScreen() - Restarted game
+05-24 21:27:40 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
+05-24 21:27:40 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
+05-24 21:27:40 [INFO] boardgame.EndScreenController.backToStart() - Back to Start Screen
+05-24 21:27:41 [INFO] boardgame.StartScreenController.loadHelpScreen() - Help Scene loaded
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Blue Player, Score:28
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Second Player, Score:245
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Third Player, Score:123
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:36
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:27
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:41
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:40
+05-24 21:27:42 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-24 21:27:42 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-24 21:27:42 [INFO] boardgame.HelpScreenController.startGame() - Game Started
