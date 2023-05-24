@@ -39,7 +39,7 @@
       </Rectangle>
       <VBox cacheShape="false" layoutX="244.0" layoutY="176.0" prefHeight="540.0" prefWidth="673.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="672.5654296875">
+            <Text id="scoreTextId" fx:id="scoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="672.5654296875">
                <font>
                   <Font size="35.0" />
                </font>

@@ -44,7 +44,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button layoutX="475.0" layoutY="490.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="252.0" text="Scores" textAlignment="CENTER">
+      <Button layoutX="475.0" layoutY="490.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="90.0" prefWidth="252.0" text="Scores" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>

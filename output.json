@@ -1,10 +1,18 @@
 [
   {
-    "name": "RedName",
-    "score": 1
+    "name": "Blue Player",
+    "score": 28
   },
   {
-    "name": "BlueName",
-    "score": 1
+    "name": "Second Player",
+    "score": 245
+  },
+  {
+    "name": "Third Player",
+    "score": 123
+  },
+  {
+    "name": "Unknown",
+    "score": 35
   }
 ]

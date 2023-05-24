@@ -22,11 +22,12 @@ import java.util.List;
 public class EndScreenController {
 
     private String path = "output.json";
-    List <Game> gameList = new ArrayList<>();
+    //List <Game> gameList = new ArrayList<>();
     public Text scoreText;
 
     @FXML
     private void initialize(){
+        scoreText.setText("");
         jsonReaderGSON();
     }
 
@@ -38,9 +39,16 @@ public class EndScreenController {
 
             List<Game> gameList = gson.fromJson(reader, listType);
 
-            for (Game game : gameList) {
-                Logger.info("Name: " + game.getName() + ", Score:" + game.getScore());
+            int size = gameList.size();
+            int startIndex = Math.max(size - 5, 0);
+            int endIndex = size;
+
+            for (int i = startIndex; i < endIndex; i++) {
+                String toAdd =  gameList.get(i).getName() + " - won in " + gameList.get(i).getScore() + " turns";
+                Logger.info(toAdd);
+                scoreText.setText(scoreText.getText() + "\n" + toAdd);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

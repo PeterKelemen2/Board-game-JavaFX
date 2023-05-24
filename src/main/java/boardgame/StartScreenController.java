@@ -24,13 +24,14 @@ public class StartScreenController {
         Logger.info("Game Started");
     }
 
-    public void showEndScreen(ActionEvent actionEvent){
+    @FXML
+    public void loadEndScreen(ActionEvent actionEvent){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/endScreen.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("End screen shown");
+        Logger.info("End Scene loaded");
     }
 
     private Parent fxmlLoading(FXMLLoader loader){

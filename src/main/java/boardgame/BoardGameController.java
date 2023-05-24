@@ -71,7 +71,7 @@ public class BoardGameController {
         try (Reader reader = new FileReader(path)) {
             Type listType = new TypeToken<List<Game>>(){}.getType();
 
-            List<Game> gameList = gson.fromJson(reader, listType);
+            gameList = gson.fromJson(reader, listType);
 
             for (Game game : gameList) {
                 Logger.info("Name: " + game.getName() + ", Score:" + game.getScore());
@@ -123,7 +123,6 @@ public class BoardGameController {
     @FXML
     private void initialize() {
 
-        // jsonWriterGSON();
         jsonReaderGSON();
 
         for (var i = 0; i < board.getRowCount(); i++) {
@@ -235,7 +234,10 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    Game game = new Game(color, turnsTaken);
+                    if(redNameString == null){
+                        redNameString = "Unknown";
+                    }
+                    Game game = new Game(redNameString, turnsTaken);
                     gameList.add(game);
                     Logger.info(game);
                     jsonWriterGSON();
@@ -255,7 +257,10 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    Game game = new Game(color, turnsTaken);
+                    if(blueNameString == null){
+                        blueNameString = "Unknown";
+                    }
+                    Game game = new Game(blueNameString, turnsTaken);
                     gameList.add(game);
                     Logger.info(game);
                     jsonWriterGSON();
