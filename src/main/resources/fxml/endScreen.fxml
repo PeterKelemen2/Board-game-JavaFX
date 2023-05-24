@@ -36,9 +36,9 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <VBox cacheShape="false" layoutX="1.0" layoutY="176.0" prefHeight="540.0" prefWidth="1194.0" spacing="20.0" stylesheets="@../boardGame.css">
+      <VBox cacheShape="false" layoutX="29.0" layoutY="172.0" prefHeight="540.0" prefWidth="1142.0" spacing="20.0" stylesheets="@../boardGame.css">
          <children>
-            <Text id="scoreTextId" fx:id="scoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet assumenda at commodi cumque dicta doloremque et ex fuga, id inventore minus molestias nulla officiis perspiciatis placeat quia quis ratione reprehenderit, sed sint ullam vel voluptate. Aliquam animi architecto consequuntur cum earum esse ex explicabo, facilis, officiis rerum similique veniam." textAlignment="CENTER" wrappingWidth="1196.5654296875">
+            <Text id="scoreTextId" fx:id="scoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet assumenda at commodi cumque dicta doloremque et ex fuga, id inventore minus molestias nulla officiis perspiciatis placeat quia quis ratione reprehenderit, sed sint ullam vel voluptate. Aliquam animi architecto consequuntur cum earum esse ex explicabo, facilis, officiis rerum similique veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet assumenda at commodi cumque dicta doloremque et ex fuga, id inventore minus molestias nulla officiis perspiciatis placeat quia quis ratione reprehenderit, sed sint ullam vel voluptate. Aliquam animi architecto consequuntur cum earum esse ex explicabo, facilis, officiis rerum similique veniam." textAlignment="CENTER" wrappingWidth="1141.5654296875">
                <font>
                   <Font size="21.0" />
                </font>

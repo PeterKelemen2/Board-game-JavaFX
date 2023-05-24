@@ -57,3 +57,8 @@
 .header-text{
     -fx-font-family: "Alata";
 }
+
+.help-text{
+    -fx-font-family: "Alata";
+    -fx-font-size: 30px;
+}

@@ -20,7 +20,16 @@ public class StartScreenController {
 
     @FXML
     private void initialize(){
-        Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
+
+        Logger.info("Start Screen loaded");
+
+        try {
+            Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
+            Logger.info("Font loaded successfully");
+        } catch (Exception e){
+            Logger.info("Something went wrong!");
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -41,6 +50,16 @@ public class StartScreenController {
         stage.setScene(new Scene(root));
         stage.show();
         Logger.info("End Scene loaded");
+    }
+
+    @FXML
+    public void loadHelpScreen(ActionEvent actionEvent){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/helpScreen.fxml"));
+        Parent root = fxmlLoading(loader);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        Logger.info("Help Scene loaded");
     }
 
     private Parent fxmlLoading(FXMLLoader loader){

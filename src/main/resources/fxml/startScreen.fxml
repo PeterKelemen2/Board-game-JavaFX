@@ -36,7 +36,7 @@
             <Font size="72.0" />
          </font>
       </Text>
-      <Button fx:id="playButton" layoutX="474.0" layoutY="358.0" mnemonicParsing="false" onAction="#startGame" prefHeight="90.0" prefWidth="252.0" styleClass="start-text" stylesheets="@../boardGame.css" text="Play" textAlignment="CENTER">
+      <Button fx:id="playButton" layoutX="474.0" layoutY="299.0" mnemonicParsing="false" onAction="#startGame" prefHeight="90.0" prefWidth="252.0" styleClass="start-text" stylesheets="@../boardGame.css" text="Play" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>
@@ -44,7 +44,15 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button layoutX="475.0" layoutY="490.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="90.0" prefWidth="252.0" styleClass="start-text" stylesheets="@../boardGame.css" text="Scores" textAlignment="CENTER">
+      <Button layoutX="475.0" layoutY="403.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="90.0" prefWidth="252.0" styleClass="start-text" stylesheets="@../boardGame.css" text="Scores" textAlignment="CENTER">
+         <font>
+            <Font size="39.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button layoutX="474.0" layoutY="507.0" mnemonicParsing="false" onAction="#loadHelpScreen" prefHeight="90.0" prefWidth="252.0" styleClass="start-text" stylesheets="@../boardGame.css" text="Help" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>
