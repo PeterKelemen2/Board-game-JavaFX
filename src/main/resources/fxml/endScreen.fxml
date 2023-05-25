@@ -48,7 +48,7 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <Button layoutX="553.0" layoutY="736.0" mnemonicParsing="false" onAction="#backToStart" prefHeight="33.0" prefWidth="95.0" styleClass="button-text" stylesheets="@../boardGame.css" text="Back">
+      <Button layoutX="553.0" layoutY="736.0" mnemonicParsing="false" onAction="#backToStart" prefHeight="33.0" prefWidth="95.0" styleClass="small-button-text" stylesheets="@../boardGame.css" text="Back">
          <font>
             <Font size="16.0" />
          </font>

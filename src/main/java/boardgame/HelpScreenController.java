@@ -21,11 +21,11 @@ public class HelpScreenController {
     private void initialize(){
         helpText.setText(
                 "• Each player can move straight or\n" +
-                "diagonally to the other end of the board\n" +
+                "diagonally to the other end of the board.\n" +
                 "• A player can lose by losing all their\n" +
                 "tiles or having no more steps available.\n" +
                 "• There are two forbidden squares, where\n" +
-                "The player is not allowed to step");
+                "the player is not allowed to step.");
     }
 
     @FXML

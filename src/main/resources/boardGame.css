@@ -15,6 +15,7 @@
 
 .text-field{
     -fx-background-radius: 7px;
+    -fx-font-size: 20px;
 }
 
 @font-face{
@@ -27,38 +28,36 @@
     -fx-font-size: 30px;
 }
 
-.text{
+*{
     -fx-font-family: "Alata";
 }
 
 .basic-text{
-    -fx-font-family: "Alata";
     -fx-font-size: 20px;
 }
 
-.start-text{
-    -fx-font-family: "Alata";
-    -fx-font-size: 35px;
+.big-header-text{
+    -fx-font-size: 75px;
 }
 
 .round-text{
     -fx-font-weight: bold;
-    -fx-font-family: "Alata";
     -fx-font-size: 30px;
     -fx-padding: 20px;
 }
 
-.button-text{
-    -fx-font-family: "Alata";
+.small-button-text{
     -fx-font-size: 20px;
-
 }
 
-.header-text{
-    -fx-font-family: "Alata";
+.big-button-text{
+    -fx-font-size: 30px;
+}
+
+.help-header-text{
+    -fx-font-size: 40px;
 }
 
 .help-text{
-    -fx-font-family: "Alata";
     -fx-font-size: 30px;
 }

@@ -89,17 +89,17 @@
             </children>
          </AnchorPane>
       </HBox>
-      <Button layoutX="958.0" layoutY="138.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="51.0" prefWidth="174.0" style="-fx-border-radius: 20;" styleClass="button-text" stylesheets="@../boardGame.css" text="Restart">
+      <Button layoutX="958.0" layoutY="138.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="51.0" prefWidth="174.0" style="-fx-border-radius: 20;" styleClass="small-button-text" stylesheets="@../boardGame.css" text="Restart">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="958.0" layoutY="212.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="51.0" prefWidth="174.0" styleClass="button-text" stylesheets="@../boardGame.css" text="Scores">
+      <Button layoutX="958.0" layoutY="212.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="51.0" prefWidth="174.0" styleClass="small-button-text" stylesheets="@../boardGame.css" text="Scores">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="990.0" layoutY="286.0" mnemonicParsing="false" onAction="#backTostart" prefHeight="45.0" prefWidth="107.0" styleClass="button-text" stylesheets="@../boardGame.css" text="Back">
+      <Button layoutX="990.0" layoutY="286.0" mnemonicParsing="false" onAction="#backTostart" prefHeight="45.0" prefWidth="107.0" styleClass="small-button-text" stylesheets="@../boardGame.css" text="Back">
          <font>
             <Font size="20.0" />
          </font>

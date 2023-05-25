@@ -39,18 +39,6 @@ public class StartScreenController {
     }
 
     private static final String path = "output.json";
-    public void createJSON(){
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String json = gson.toJson("");
-
-        try (FileWriter writer = new FileWriter(path)) {
-            gson.toJson(json, writer);
-            Logger.info("JSON file created successfully!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     public void startGame(ActionEvent actionEvent){

@@ -30,14 +30,14 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle id="rectangle" arcHeight="5.0" arcWidth="5.0" height="504.0" layoutX="227.0" layoutY="80.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" styleClass="startScreen" width="746.0" />
-      <Text layoutX="498.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="The rules" textAlignment="CENTER" wrappingWidth="203.13671875">
+      <Rectangle id="rectangle" arcHeight="5.0" arcWidth="5.0" height="338.0" layoutX="227.0" layoutY="80.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" styleClass="startScreen" width="746.0" />
+      <Text layoutX="498.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="help-header-text" text="The rules" textAlignment="CENTER" wrappingWidth="203.13671875">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
       <Text id="helpText" fx:id="helpText" layoutX="245.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="help-text" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet assumenda at commodi cumque dicta doloremque et ex fuga, id inventore minus molestias nulla officiis perspiciatis placeat quia quis ratione reprehenderit, sed sint ullam vel voluptate. Aliquam animi architecto consequuntur cum earum esse ex explicabo, facilis, officiis rerum similique veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet assumenda at commodi cumque dicta doloremque et ex fuga, id inventore minus molestias nulla officiis perspiciatis placeat quia quis ratione reprehenderit, sed sint ullam vel voluptate. Aliquam animi architecto consequuntur cum earum esse ex explicabo, facilis, officiis rerum similique veniam." textAlignment="JUSTIFY" wrappingWidth="710.13671875" />
-      <Button fx:id="playButton" layoutX="330.0" layoutY="688.0" mnemonicParsing="false" onAction="#startGame" prefHeight="90.0" prefWidth="252.0" styleClass="start-text" stylesheets="@../boardGame.css" text="Play" textAlignment="CENTER">
+      <Button fx:id="playButton" layoutX="330.0" layoutY="688.0" mnemonicParsing="false" onAction="#startGame" prefHeight="90.0" prefWidth="252.0" styleClass="big-button-text" stylesheets="@../boardGame.css" text="Play" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>
@@ -45,7 +45,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button layoutX="619.0" layoutY="688.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="90.0" prefWidth="252.0" styleClass="start-text" stylesheets="@../boardGame.css" text="Scores" textAlignment="CENTER">
+      <Button layoutX="619.0" layoutY="688.0" mnemonicParsing="false" onAction="#loadEndScreen" prefHeight="90.0" prefWidth="252.0" styleClass="big-button-text" stylesheets="@../boardGame.css" text="Scores" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font>

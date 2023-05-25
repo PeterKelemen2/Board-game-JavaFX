@@ -31,7 +31,7 @@ public class EndScreenController {
 
     @FXML
     private void initialize(){
-        Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
+        //Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
 
         if(jsonFile.exists()){
             scoreText.setText("");
