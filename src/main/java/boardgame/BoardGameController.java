@@ -245,8 +245,6 @@ public class BoardGameController {
                             case BLUE -> customBlue;
                             case YELLOW -> customYellow;
                             case BLACK -> Color.BLACK;
-                            case ORANGERED -> Color.ORANGERED;
-
                         };
                     }
                 }

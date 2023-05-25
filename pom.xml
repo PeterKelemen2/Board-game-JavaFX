@@ -20,14 +20,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <javafx.version>18</javafx.version>
-        <junit.jupiter.version>5.8.2</junit.jupiter.version>
-        <maven.javadoc.version>3.3.2</maven.javadoc.version>
-        <maven.checkstyle.version>3.1.2</maven.checkstyle.version>
-        <maven.surefire.version>3.0.0-M6</maven.surefire.version>
-        <jacoco.version>0.8.8</jacoco.version>
-        <tinylog.version>2.6.1</tinylog.version>
+        <javafx.version>20</javafx.version>
+        <junit.jupiter.version>5.9.2</junit.jupiter.version>
+        <maven.javadoc.version>3.5.0</maven.javadoc.version>
+        <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
+        <maven.surefire.version>3.0.0</maven.surefire.version>
+        <jacoco.version>0.8.9</jacoco.version>
         <jackson.version>2.14.2</jackson.version>
+        <tinylog.version>2.6.1</tinylog.version>
         <exec.mainClass>boardgame.Main</exec.mainClass>
     </properties>
     <dependencies>
@@ -85,12 +85,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.11.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>4.0.0-M6</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -123,7 +123,7 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>10.1</version>
+                        <version>10.9.3</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -154,7 +154,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

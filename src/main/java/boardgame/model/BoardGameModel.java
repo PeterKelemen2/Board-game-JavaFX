@@ -27,17 +27,16 @@ public class BoardGameModel {
     private int playerColor = 0;
     private int turnsTaken;
     public Game p;
-    public List<Game> gameList = new ArrayList<>();
 
     private String redName;
     private String blueName;
 
 
-    private int[][] colorData = new int [6][7];
-    int redCount;
-    int blueCount;
-    int nrOfLegalRedMoves = 0;
-    int nrOfLegalBlueMoves = 0;
+    public int[][] colorData = new int [6][7];
+    private int redCount;
+    private int blueCount;
+    private int nrOfLegalRedMoves = 0;
+    private int nrOfLegalBlueMoves = 0;
     private SimpleBooleanProperty redWon = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty blueWon = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty isTie = new SimpleBooleanProperty(false);
@@ -52,6 +51,7 @@ public class BoardGameModel {
      * @param j The column index of the cell.
      * @return The color of the specified cell as a string.
      */
+
     public String whatColor(int i, int j){
         switch (board[i][j].get()){
             case RED:
@@ -352,6 +352,18 @@ public class BoardGameModel {
         }
     }
 
+    public void setupBoardTwo(){
+        for(int i = 0; i<6; i++){
+            for(int j = 0; j<7; j++){
+                if(i == 0){
+                    board[i][j].set(Square.RED);
+                } else if(i == 5){
+                    board[i][j].set(Square.BLUE);
+                }
+            }
+        }
+    }
+
     private void showIfNotForbidden(int i, int k, String player){
         switch(player){
             case "red" -> {
@@ -472,5 +484,16 @@ public class BoardGameModel {
     public static void main(String[] args) {
         var model = new BoardGameModel();
 
+    }
+
+    /**
+     * Retrieves the Square value at the specified position on the board.
+     *
+     * @param i the row index of the position
+     * @param j the column index of the position
+     * @return the Square value at the specified position
+     */
+    public Square getSquareAtPosition(int i, int j) {
+        return board[i][j].get();
     }
 }
