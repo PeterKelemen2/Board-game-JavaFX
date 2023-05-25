@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -91,12 +92,17 @@ public class BoardGameController {
     }
 
     private void openAlertBox(String playerName){
-        ButtonType testButton = new ButtonType("Close");
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.getDialogPane().getStyleClass().add("alert");
         alert.setTitle("Game Over");
         alert.setHeaderText("Game Over\n" + "Player " + playerName + " won in " + turnsTaken + " turns");
+
+        ButtonType testButton = new ButtonType("Close");
         alert.getButtonTypes().add(testButton);
+
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("icon2.png"));
+
         alert.show();
     }
 

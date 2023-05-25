@@ -1,28 +1,9 @@
-05-25 19:04:04 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
-05-25 19:04:04 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
-05-25 19:04:07 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 69 turns
-05-25 19:04:07 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 31 turns
-05-25 19:04:07 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 34 turns
-05-25 19:04:07 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 35 turns
-05-25 19:04:07 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 33 turns
-05-25 19:04:07 [INFO] boardgame.StartScreenController.loadEndScreen() - End Scene loaded
-05-25 19:04:09 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
-05-25 19:04:09 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
-05-25 19:04:09 [INFO] boardgame.EndScreenController.backToStart() - Back to Start Screen
-05-25 19:04:12 [INFO] boardgame.StartScreenController.loadHelpScreen() - Help Scene loaded
-05-25 19:04:12 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 69 turns
-05-25 19:04:12 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 31 turns
-05-25 19:04:12 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 34 turns
-05-25 19:04:12 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 35 turns
-05-25 19:04:12 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 33 turns
-05-25 19:04:12 [INFO] boardgame.HelpScreenController.loadEndScreen() - End Scene loaded
-05-25 19:04:13 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
-05-25 19:04:13 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
-05-25 19:04:13 [INFO] boardgame.EndScreenController.backToStart() - Back to Start Screen
-05-25 19:04:14 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:69
-05-25 19:04:14 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:31
-05-25 19:04:14 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:34
-05-25 19:04:14 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
-05-25 19:04:14 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:33
-05-25 19:04:14 [INFO] boardgame.BoardGameController.initialize() - Board initialized
-05-25 19:04:14 [INFO] boardgame.StartScreenController.startGame() - Game Started
+05-25 19:06:21 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
+05-25 19:06:21 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
+05-25 19:06:22 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:69
+05-25 19:06:22 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:31
+05-25 19:06:22 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:34
+05-25 19:06:22 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
+05-25 19:06:22 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:33
+05-25 19:06:22 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-25 19:06:22 [INFO] boardgame.StartScreenController.startGame() - Game Started
