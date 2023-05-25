@@ -1,70 +1,129 @@
-05-25 17:21:55 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
-05-25 17:21:55 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Blue Player, Score:28
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Second Player, Score:245
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Third Player, Score:123
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:36
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:27
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:41
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:40
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:41
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:42
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:33
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:34
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:36
-05-25 17:21:57 [INFO] boardgame.BoardGameController.jsonReaderGSON() - Name: Unknown, Score:35
-05-25 17:21:57 [INFO] boardgame.BoardGameController.initialize() - Board initialized
-05-25 17:21:57 [INFO] boardgame.StartScreenController.startGame() - Game Started
-05-25 17:21:57 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:21:57 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 4)
-05-25 17:21:57 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:21:57 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 4) to (1 4)
-05-25 17:21:58 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:21:58 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 4)
-05-25 17:21:58 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:21:58 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 4) to (4 4)
-05-25 17:21:59 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:21:59 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (1 4)
-05-25 17:21:59 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:21:59 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 4) to (2 3)
-05-25 17:21:59 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:21:59 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (1 4)
-05-25 17:22:00 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:00 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (4 4) to (3 4)
-05-25 17:22:00 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:00 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (2 3)
-05-25 17:22:00 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:00 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (2 3) to (3 3)
-05-25 17:22:01 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:01 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (2 3)
-05-25 17:22:01 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:01 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (3 4) to (2 5)
-05-25 17:22:01 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:01 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (3 3)
-05-25 17:22:02 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:02 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (3 3) to (4 4)
-05-25 17:22:02 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:02 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (3 3)
-05-25 17:22:02 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:02 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (2 5) to (1 4)
-05-25 17:22:03 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:03 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (4 4)
-05-25 17:22:03 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:03 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (4 4) to (5 4)
-05-25 17:22:04 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:04 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (4 4)
-05-25 17:22:04 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:04 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 4) to (0 4)
-05-25 17:22:05 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:05 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (5 4)
-05-25 17:22:07 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:07 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 3)
-05-25 17:22:07 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
-05-25 17:22:07 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 3) to (1 3)
-05-25 17:22:07 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
-05-25 17:22:07 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 3)
+05-25 17:37:02 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
+05-25 17:37:02 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
+05-25 17:37:02 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-25 17:37:03 [INFO] boardgame.StartScreenController.startGame() - Game Started
+05-25 17:37:04 [INFO] boardgame.BoardGameController.loadEndScreen() - Restarted game
+05-25 17:37:11 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
+05-25 17:37:11 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
+05-25 17:37:11 [INFO] boardgame.EndScreenController.backToStart() - Back to Start Screen
+05-25 17:37:15 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-25 17:37:15 [INFO] boardgame.StartScreenController.startGame() - Game Started
+05-25 17:37:18 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:18 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 4)
+05-25 17:37:18 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:18 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 4) to (1 4)
+05-25 17:37:19 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:19 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 4)
+05-25 17:37:19 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:19 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 4) to (4 5)
+05-25 17:37:20 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:20 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (1 4)
+05-25 17:37:20 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:20 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 4) to (2 5)
+05-25 17:37:20 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:20 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (1 4)
+05-25 17:37:20 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:20 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (4 5) to (3 5)
+05-25 17:37:21 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:21 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (2 5)
+05-25 17:37:21 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:21 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (2 5) to (3 5)
+05-25 17:37:22 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:22 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (2 5)
+05-25 17:37:22 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:22 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 5) to (4 6)
+05-25 17:37:22 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:22 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (3 5)
+05-25 17:37:22 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:22 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (3 5) to (4 6)
+05-25 17:37:23 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:23 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (3 5)
+05-25 17:37:23 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:23 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 6) to (4 6)
+05-25 17:37:24 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:24 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 5)
+05-25 17:37:24 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:24 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 5) to (1 5)
+05-25 17:37:24 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:24 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 5)
+05-25 17:37:25 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:25 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (4 6) to (3 6)
+05-25 17:37:25 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:25 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (1 5)
+05-25 17:37:25 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:25 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 5) to (2 5)
+05-25 17:37:25 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:25 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (1 5)
+05-25 17:37:26 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:26 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (3 6) to (2 5)
+05-25 17:37:26 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:26 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 6)
+05-25 17:37:26 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:26 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 6) to (1 6)
+05-25 17:37:26 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:26 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 6)
+05-25 17:37:26 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:26 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (2 5) to (1 6)
+05-25 17:37:27 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:27 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 3)
+05-25 17:37:27 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:27 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 3) to (1 3)
+05-25 17:37:28 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:28 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 3)
+05-25 17:37:28 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:28 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 3) to (4 4)
+05-25 17:37:29 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:29 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (1 3)
+05-25 17:37:29 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:29 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 3) to (2 3)
+05-25 17:37:30 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:30 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (1 3)
+05-25 17:37:30 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:30 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (4 4) to (3 4)
+05-25 17:37:31 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:31 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 2)
+05-25 17:37:31 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:31 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 2) to (1 2)
+05-25 17:37:31 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:31 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 2)
+05-25 17:37:32 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:32 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (3 4) to (2 3)
+05-25 17:37:33 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:33 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 0)
+05-25 17:37:33 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:33 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 0) to (1 0)
+05-25 17:37:33 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:33 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 0)
+05-25 17:37:33 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:33 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (2 3) to (1 2)
+05-25 17:37:34 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:34 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (1 0)
+05-25 17:37:34 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:34 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 0) to (2 0)
+05-25 17:37:34 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:34 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (1 0)
+05-25 17:37:35 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:35 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 2) to (0 1)
+05-25 17:37:35 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:36 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:36 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (2 0)
+05-25 17:37:36 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:36 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (2 0) to (3 0)
+05-25 17:37:37 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:37 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (2 0)
+05-25 17:37:37 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:37 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 1) to (4 1)
+05-25 17:37:39 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:39 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (3 0)
+05-25 17:37:39 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-25 17:37:39 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (3 0) to (4 0)
+05-25 17:37:40 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:40 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (3 0)
+05-25 17:37:40 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-25 17:37:40 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 0) to (4 0)
+05-25 17:37:40 [INFO] boardgame.model.BoardGameModel.checkForGameOver() -  == Blue won ==
+05-25 17:37:40 [INFO] boardgame.BoardGameController.handleMouseClick() - GAME OVER
+05-25 17:37:40 [INFO] boardgame.BoardGameController.handleMouseClick() - Unknown:28
+05-25 17:37:40 [INFO] boardgame.BoardGameController.jsonWriterGSON() - JSON file created successfully!
+05-25 17:37:42 [INFO] boardgame.EndScreenController.jsonReaderGSON() - Unknown - won in 28 turns
+05-25 17:37:42 [INFO] boardgame.BoardGameController.loadEndScreen() - Restarted game

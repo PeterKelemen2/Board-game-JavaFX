@@ -56,6 +56,7 @@ public class BoardGameController {
     private String path = "output.json";
 
     private List<Game> gameList = new ArrayList<>();
+    private File jsonFile = new File(path);
 
     public void jsonWriterGSON(){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -128,7 +129,9 @@ public class BoardGameController {
     @FXML
     private void initialize() {
 
-        jsonReaderGSON();
+        if(jsonFile.exists()){
+            jsonReaderGSON();
+        }
 
         for (var i = 0; i < board.getRowCount(); i++) {
             for (var j = 0; j < board.getColumnCount(); j++) {
@@ -232,8 +235,6 @@ public class BoardGameController {
         model.setTurnsTaken(turnsTaken);
         turns.setText("Turns taken: " + turnsTaken);
     }
-
-
 
     @FXML
     private void handleMouseClick(MouseEvent event){

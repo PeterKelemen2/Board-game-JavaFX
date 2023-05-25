@@ -1,5 +1,7 @@
 package boardgame;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +13,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
 public class StartScreenController {
 
     private String alataPath = "fonts/Alata-Regular.ttf";
-
+    File jsonFile = new File(path);
     @FXML
     private void initialize(){
 
@@ -26,9 +30,25 @@ public class StartScreenController {
         try {
             Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
             Logger.info("Font loaded successfully");
+
+
         } catch (Exception e){
             Logger.info("Something went wrong!");
             throw new RuntimeException(e);
+        }
+    }
+
+    private static final String path = "output.json";
+    public void createJSON(){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String json = gson.toJson("");
+
+        try (FileWriter writer = new FileWriter(path)) {
+            gson.toJson(json, writer);
+            Logger.info("JSON file created successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

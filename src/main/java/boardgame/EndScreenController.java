@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -23,15 +24,22 @@ import java.util.List;
 public class EndScreenController {
 
     private String path = "output.json";
-    //List <Game> gameList = new ArrayList<>();
+    File jsonFile = new File(path);
+    List <Game> gameList = new ArrayList<>();
     public Text scoreText;
     private String alataPath = "fonts/Alata-Regular.ttf";
 
     @FXML
     private void initialize(){
         Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( alataPath), 30);
-        scoreText.setText("");
-        jsonReaderGSON();
+
+        if(jsonFile.exists()){
+            scoreText.setText("");
+            jsonReaderGSON();
+        } else{
+            scoreText.setText("No games played yet");
+        }
+
         //scoreText.setFont(alataFont);
 
     }
@@ -42,7 +50,7 @@ public class EndScreenController {
         try (Reader reader = new FileReader(path)) {
             Type listType = new TypeToken<List<Game>>(){}.getType();
 
-            List<Game> gameList = gson.fromJson(reader, listType);
+            gameList = gson.fromJson(reader, listType);
 
             int size = gameList.size();
             int startIndex = Math.max(size - 5, 0);
