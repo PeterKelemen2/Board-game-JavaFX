@@ -188,7 +188,11 @@ public class BoardGameController {
                 .otherwise(
                         Bindings.when(model.getRedWon())
                                 .then("Winner: Red")
-                                .otherwise(""))));
+                                .otherwise(
+                                        Bindings.when(model.getIsTie())
+                                                .then("Tie")
+                                                .otherwise("")
+                                ))));
 
         turns.setText("Turns taken: " + turnsTaken);
     }

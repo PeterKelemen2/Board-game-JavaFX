@@ -40,6 +40,7 @@ public class BoardGameModel {
     int nrOfLegalBlueMoves = 0;
     private SimpleBooleanProperty redWon = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty blueWon = new SimpleBooleanProperty(false);
+    private SimpleBooleanProperty isTie = new SimpleBooleanProperty(false);
 
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
     private boolean isGameOver = false;
@@ -72,7 +73,10 @@ public class BoardGameModel {
 
     public BooleanProperty getBlueWon(){
         return blueWon;
+    }
 
+    public BooleanProperty getIsTie(){
+        return isTie;
     }
 
     public void setTurnsTaken(int turnsTaken) {
@@ -97,7 +101,7 @@ public class BoardGameModel {
             blueWon.set(true);
             currentPhase.set(GamePhase.OVER);
             p = new Game(blueName, turnsTaken);
-            Logger.info(" == Blue won ==");
+            Logger.info(" == Blue won == ");
             return true;
         }
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
@@ -105,6 +109,14 @@ public class BoardGameModel {
             currentPhase.set(GamePhase.OVER);
             p = new Game(redName, turnsTaken);
             Logger.info(" == Red won == ");
+            return true;
+        }
+
+        if(blueCount == redCount && (nrOfLegalBlueMoves == 0 && nrOfLegalRedMoves == 0)){
+            isTie.set(true);
+            currentPhase.set(GamePhase.OVER);
+            p = new Game("Tie", turnsTaken);
+            Logger.info(" == Tie == ");
             return true;
         }
         return false;
