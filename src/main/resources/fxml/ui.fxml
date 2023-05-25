@@ -84,7 +84,7 @@
                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
              </padding>
             <children>
-               <Text id="textId" fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Round of" wrappingWidth="224.13671875">
+               <Text id="textId" fx:id="roundText" strokeType="OUTSIDE" strokeWidth="0.0" text="Round of" wrappingWidth="224.13671875">
                   <font>
                      <Font size="20.0" />
                   </font>

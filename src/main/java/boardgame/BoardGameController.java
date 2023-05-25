@@ -18,7 +18,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 //import org.json.simple.JSONObject;
@@ -37,7 +36,7 @@ public class BoardGameController {
     private Color customYellow = Color.rgb(251,202,4);
 
 
-    public Text text;
+    public Text roundText;
     public Text winner;
     public Text turns;
 
@@ -140,7 +139,7 @@ public class BoardGameController {
             }
         }
 
-        text.setFill(customRed);
+        roundText.setFill(customRed);
         Logger.info("Board initialized");
 
 
@@ -160,7 +159,7 @@ public class BoardGameController {
             }
         });
 
-        text.textProperty().bind(Bindings.concat("", Bindings
+        roundText.textProperty().bind(Bindings.concat("", Bindings
                 .when(model.currentPhase.isEqualTo(GamePhase.RED))
                 .then("Round of: Red")
                 .otherwise(
@@ -170,6 +169,15 @@ public class BoardGameController {
                                         .then("Game Over")
                                         .otherwise(""))
                 )));
+
+        roundText.fillProperty().bind(Bindings
+                .when(model.currentPhase.isEqualTo(GamePhase.RED))
+                .then(customRed)
+                .otherwise(
+                        Bindings.when(model.currentPhase.isEqualTo(GamePhase.BLUE))
+                                .then(customBlue)
+                                .otherwise(Color.BLACK)
+                ));
 
         winner.textProperty().bind(Bindings.concat("", Bindings
                 .when(model.getBlueWon())
@@ -225,6 +233,8 @@ public class BoardGameController {
         turns.setText("Turns taken: " + turnsTaken);
     }
 
+
+
     @FXML
     private void handleMouseClick(MouseEvent event){
         var square = (StackPane) event.getSource();
@@ -233,7 +243,8 @@ public class BoardGameController {
 
         String color = model.whatColor(row,col);
 
-        if(model.currentPhase.get() == GamePhase.RED){
+        if(model.currentPhase.get() == GamePhase.RED && model.currentPhase.get() != GamePhase.OVER){
+            Logger.info("Turn of " + model.currentPhase.get());
             if(color.equals("red")){
                 model.manageBoardAfterStepShow();
                 model.showLegalMoves(row,col, "red");
@@ -243,7 +254,9 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    text.setFill(Color.rgb(0,0,0));
+                    model.currentPhase.set(GamePhase.OVER);
+                    Logger.info("GAME " + model.currentPhase.get());
+                    //setGameOverText();
                     if(redNameString == null){
                         redNameString = "Unknown";
                     }
@@ -251,13 +264,14 @@ public class BoardGameController {
                     gameList.add(game);
                     Logger.info(game);
                     jsonWriterGSON();
+                } else{
+                    model.currentPhase.set(GamePhase.BLUE);
+                    turnsTakenText();
                 }
-                model.currentPhase.set(GamePhase.BLUE);
-                turnsTakenText();
-                text.setFill(customBlue);
             }
 
-        } else {
+        } else if(model.currentPhase.get() == GamePhase.BLUE && model.currentPhase.get() != GamePhase.OVER){
+            Logger.info("Turn of " + model.currentPhase.get());
             if(color.equals("blue")){
                 model.manageBoardAfterStepShow();
                 model.showLegalMoves(row, col, "blue");
@@ -267,7 +281,8 @@ public class BoardGameController {
             if(color.equals("yellow")){
                 model.makeMove();
                 if(model.checkForGameOver()){
-                    text.setFill(Color.rgb(0,0,0));
+                    model.currentPhase.set(GamePhase.OVER);
+                    Logger.info("GAME " + model.currentPhase.get());
                     if(blueNameString == null){
                         blueNameString = "Unknown";
                     }
@@ -275,11 +290,10 @@ public class BoardGameController {
                     gameList.add(game);
                     Logger.info(game);
                     jsonWriterGSON();
+                } else{
+                    model.currentPhase.set(GamePhase.RED);
+                    turnsTakenText();
                 }
-                model.currentPhase.set(GamePhase.RED);
-                turnsTakenText();
-                text.setFill(customRed);
-
             }
         }
 

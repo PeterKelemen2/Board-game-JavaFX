@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane stylesheets="@../boardGame.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.BoardGameController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../boardGame.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boardgame.BoardGameController">
    <children>
       <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
          <fill>
@@ -46,7 +46,7 @@
                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                   </padding>
                   <children>
-                     <Text id="textId" fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="round-text" text="Round of:" wrappingWidth="224.13671875">
+                     <Text id="textId" fx:id="roundText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="round-text" text="Round of:" wrappingWidth="224.13671875">
                         <font>
                            <Font size="20.0" />
 
