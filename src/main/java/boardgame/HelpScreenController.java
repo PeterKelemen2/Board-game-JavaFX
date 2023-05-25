@@ -19,6 +19,7 @@ public class HelpScreenController {
 
     @FXML
     private void initialize(){
+        Logger.info("Help screen loaded");
         helpText.setText(
                 "• Each player can move straight or\n" +
                 "diagonally to the other end of the board.\n" +
@@ -30,22 +31,24 @@ public class HelpScreenController {
 
     @FXML
     public void startGame(ActionEvent actionEvent){
+        Logger.info("Loading game scene...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/boardGame.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("Game Started");
+
     }
 
     @FXML
     public void loadEndScreen(ActionEvent actionEvent){
+        Logger.info("Loading game history scene...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/endScreen.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("End Scene loaded");
+
     }
 
     private Parent fxmlLoading(FXMLLoader loader){

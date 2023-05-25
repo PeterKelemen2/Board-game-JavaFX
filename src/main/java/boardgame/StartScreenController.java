@@ -44,32 +44,34 @@ public class StartScreenController {
 
     @FXML
     public void startGame(ActionEvent actionEvent){
+        Logger.info("Loading game scene...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/boardGame.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("Game Started");
     }
 
     @FXML
     public void loadEndScreen(ActionEvent actionEvent){
+        Logger.info("Loading end scene...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/endScreen.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("End Scene loaded");
+
     }
 
     @FXML
     public void loadHelpScreen(ActionEvent actionEvent){
+        Logger.info("Loading help scene...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/helpScreen.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("Help Scene loaded");
+
     }
 
     private Parent fxmlLoading(FXMLLoader loader){

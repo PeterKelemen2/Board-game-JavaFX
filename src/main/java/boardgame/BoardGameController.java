@@ -84,7 +84,7 @@ public class BoardGameController {
             gameList = gson.fromJson(reader, listType);
 
             for (Game game : gameList) {
-                Logger.info("Name: " + game.getName() + ", Score:" + game.getScore());
+                //Logger.info("Name: " + game.getName() + ", Score:" + game.getScore());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -108,32 +108,35 @@ public class BoardGameController {
 
     @FXML
     public void backTostart(){
+        Logger.info("Loading start screen...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startScreen.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) board.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("Back to the Start Screen");
+
     }
 
     @FXML
     public void restartGame(){
+        Logger.info("Restarting game...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/boardGame.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) board.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("Restarted game");
+
     }
 
     @FXML
     public void loadEndScreen(){
+        Logger.info("Loading game history scene...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/endScreen.fxml"));
         Parent root = fxmlLoading(loader);
         Stage stage = (Stage) board.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-        Logger.info("Restarted game");
+
     }
 
     private Parent fxmlLoading(FXMLLoader loader){
@@ -147,6 +150,8 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
+        Logger.info("Game scene loaded");
+
         openAlertBox("asd");
 
         if(jsonFile.exists()){
@@ -216,6 +221,7 @@ public class BoardGameController {
 
         turns.setText("Turns taken: " + turnsTaken);
 
+        Logger.info("Turn of " + model.currentPhase.get());
 
     }
 
@@ -270,7 +276,7 @@ public class BoardGameController {
         String color = model.whatColor(row,col);
 
         if(model.currentPhase.get() == GamePhase.RED && model.currentPhase.get() != GamePhase.OVER){
-            Logger.info("Turn of " + model.currentPhase.get());
+
             if(color.equals("red")){
                 model.manageBoardAfterStepShow();
                 model.showLegalMoves(row,col, "red");
@@ -293,12 +299,13 @@ public class BoardGameController {
                     openAlertBox(redNameString);
                 } else{
                     model.currentPhase.set(GamePhase.BLUE);
+                    Logger.info("Turn of " + model.currentPhase.get());
                     turnsTakenText();
                 }
             }
 
         } else if(model.currentPhase.get() == GamePhase.BLUE && model.currentPhase.get() != GamePhase.OVER){
-            Logger.info("Turn of " + model.currentPhase.get());
+
             if(color.equals("blue")){
                 model.manageBoardAfterStepShow();
                 model.showLegalMoves(row, col, "blue");
@@ -320,6 +327,7 @@ public class BoardGameController {
                     openAlertBox(blueNameString);
                 } else{
                     model.currentPhase.set(GamePhase.RED);
+                    Logger.info("Turn of " + model.currentPhase.get());
                     turnsTakenText();
                 }
             }

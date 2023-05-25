@@ -11,8 +11,15 @@ import java.io.IOException;
 
 public class BoardGameApplication extends Application {
 
-    String iconPath = "icon2.png";
-    Image icon = new Image(iconPath);
+    private String iconPath = "icon2.png";
+    private Image icon = new Image(iconPath);
+
+    /**
+     * Starts the JavaFX application by setting up the primary stage and loading the start screen.
+     *
+     * @param stage The primary stage for the JavaFX application.
+     * @throws IOException If an I/O exception occurs during loading of the FXML file.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/startScreen.fxml"));
