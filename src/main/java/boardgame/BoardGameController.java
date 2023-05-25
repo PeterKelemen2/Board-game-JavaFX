@@ -11,6 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -87,6 +90,16 @@ public class BoardGameController {
         }
     }
 
+    private void openAlertBox(String playerName){
+        ButtonType testButton = new ButtonType("Close");
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.getDialogPane().getStyleClass().add("alert");
+        alert.setTitle("Game Over");
+        alert.setHeaderText("Game Over\n" + "Player " + playerName + " won in " + turnsTaken + " turns");
+        alert.getButtonTypes().add(testButton);
+        alert.show();
+    }
+
     @FXML
     public void backTostart(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startScreen.fxml"));
@@ -128,6 +141,7 @@ public class BoardGameController {
 
     @FXML
     private void initialize() {
+        openAlertBox("asd");
 
         if(jsonFile.exists()){
             jsonReaderGSON();
@@ -195,8 +209,9 @@ public class BoardGameController {
                                 ))));
 
         turns.setText("Turns taken: " + turnsTaken);
-    }
 
+
+    }
 
 
     public StackPane createSquare(int i, int j) {
@@ -269,6 +284,7 @@ public class BoardGameController {
                     gameList.add(game);
                     Logger.info(game);
                     jsonWriterGSON();
+                    openAlertBox(redNameString);
                 } else{
                     model.currentPhase.set(GamePhase.BLUE);
                     turnsTakenText();
@@ -295,6 +311,7 @@ public class BoardGameController {
                     gameList.add(game);
                     Logger.info(game);
                     jsonWriterGSON();
+                    openAlertBox(blueNameString);
                 } else{
                     model.currentPhase.set(GamePhase.RED);
                     turnsTakenText();

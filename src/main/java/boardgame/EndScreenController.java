@@ -53,7 +53,7 @@ public class EndScreenController {
             gameList = gson.fromJson(reader, listType);
 
             int size = gameList.size();
-            int startIndex = Math.max(size - 5, 0);
+            int startIndex = Math.max(size - 10, 0);
             int endIndex = size;
 
             for (int i = startIndex; i < endIndex; i++) {

@@ -18,6 +18,11 @@
     -fx-font-size: 20px;
 }
 
+.alert{
+    -fx-background-color: #ff0000;
+    -fx-text-fill: #ff0000;
+}
+
 @font-face{
     font-family: "Alata";
     src: url('/fonts/Alata-Regular.ttf');
