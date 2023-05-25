@@ -22,6 +22,7 @@ public class BoardGameModel {
     private int wasBlueY = 0;
     private int fromX;
     private int fromY;
+    private int boardEnd;
     private String color = null;
     private int playerColor = 0;
     private int turnsTaken;
@@ -313,14 +314,16 @@ public class BoardGameModel {
             case "red" -> {
                 onRowToShow = i+1;
                 playerColor = 1;
+                boardEnd = 5;
             }
             case "blue" -> {
                 onRowToShow = i-1;
                 playerColor = 2;
+                boardEnd = 0;
             }
         }
 
-        if(j-1 < 0){
+        if(j-1 < 0 && i != boardEnd){
             if(colorData[onRowToShow][j] != playerColor){
                 board[onRowToShow][j].set(Square.YELLOW);
             }
@@ -328,7 +331,7 @@ public class BoardGameModel {
                 board[onRowToShow][j+1].set(Square.YELLOW);
             }
         }
-        if(j+1 > 6){
+        if(j+1 > 6 && i != boardEnd){
             if(colorData[onRowToShow][j] != playerColor){
                 board[onRowToShow][j].set(Square.YELLOW);
             }
@@ -336,7 +339,7 @@ public class BoardGameModel {
                 board[onRowToShow][j-1].set(Square.YELLOW);
             }
         }
-        if(j > 0 && j < 6){
+        if(j > 0 && j < 6 && i != boardEnd){
             showIfNotForbidden(onRowToShow,j, player);
         }
     }
