@@ -1,3 +1,21 @@
-05-26 15:18:40 [INFO] TestBoardGameModel.testSetupBoard() - Square at (0, 2): RED
-05-26 15:18:40 [INFO] TestBoardGameModel.testSetupBoard() - Square at (5, 4): BLUE
-05-26 15:18:40 [INFO] TestBoardGameModel.testSetupBoard() - Square at (2, 3): NONE
+05-26 15:32:21 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
+05-26 15:32:21 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
+05-26 15:32:23 [INFO] boardgame.StartScreenController.startGame() - Loading game scene...
+05-26 15:32:23 [INFO] boardgame.BoardGameController.initialize() - Game scene loaded
+05-26 15:32:23 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-26 15:32:23 [INFO] boardgame.BoardGameController.initialize() - Turn of RED
+05-26 15:32:24 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (0 4)
+05-26 15:32:24 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (0 4) to (1 4)
+05-26 15:32:24 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-26 15:32:24 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (0 4)
+05-26 15:32:25 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (5 5) to (4 5)
+05-26 15:32:25 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-26 15:32:25 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (1 4)
+05-26 15:32:25 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (1 4) to (2 5)
+05-26 15:32:25 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
+05-26 15:32:26 [INFO] boardgame.model.BoardGameModel.clickedOnBlue() - Clicked on red at (1 4)
+05-26 15:32:26 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (4 5) to (3 5)
+05-26 15:32:26 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of RED
+05-26 15:32:26 [INFO] boardgame.model.BoardGameModel.clickedOnRed() - Clicked on red at (2 5)
+05-26 15:32:26 [INFO] boardgame.model.BoardGameModel.makeMove() - Moved from (2 5) to (3 5)
+05-26 15:32:26 [INFO] boardgame.BoardGameController.handleMouseClick() - Turn of BLUE
