@@ -26,11 +26,9 @@ public class BoardGameModel {
     private String color = null;
     private int playerColor = 0;
     private int turnsTaken;
-    public Game p;
 
     private String redName;
     private String blueName;
-
 
     public int[][] colorData = new int [6][7];
     private int redCount;
@@ -136,7 +134,7 @@ public class BoardGameModel {
         if(redCount == 0 || nrOfLegalRedMoves == 0){
             blueWon.set(true);
             currentPhase.set(GamePhase.OVER);
-            p = new Game(blueName, turnsTaken);
+            Game game = new Game(blueName, turnsTaken);
             Logger.info(" == Blue won == ");
             return true;
         }
@@ -144,7 +142,7 @@ public class BoardGameModel {
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
             redWon.set(true);
             currentPhase.set(GamePhase.OVER);
-            p = new Game(redName, turnsTaken);
+            Game game = new Game(redName, turnsTaken);
             Logger.info(" == Red won == ");
             return true;
         }
@@ -152,7 +150,7 @@ public class BoardGameModel {
         if(blueCount == redCount && (nrOfLegalBlueMoves == 0 && nrOfLegalRedMoves == 0)){
             isTie.set(true);
             currentPhase.set(GamePhase.OVER);
-            p = new Game("Tie", turnsTaken);
+            Game game = new Game("Tie", turnsTaken);
             Logger.info(" == Tie == ");
             return true;
         }
@@ -308,7 +306,8 @@ public class BoardGameModel {
     private int boardIndexWidth = 6;
     private int boardIndexHeight = 5;
 
-    private ReadOnlyObjectWrapper<Square>[][] board = new ReadOnlyObjectWrapper[BOARD_SIZE][BOARD_SIZE];
+    private ReadOnlyObjectWrapper<Square>[][] board =
+            new ReadOnlyObjectWrapper[BOARD_SIZE][BOARD_SIZE];
 
     /**
      * Constructs a new instance of the BoardGameModel.
@@ -349,18 +348,6 @@ public class BoardGameModel {
             board[i][j].set(Square.RED);
         } else if(i == 5){
             board[i][j].set(Square.BLUE);
-        }
-    }
-
-    public void setupBoardTwo(){
-        for(int i = 0; i<6; i++){
-            for(int j = 0; j<7; j++){
-                if(i == 0){
-                    board[i][j].set(Square.RED);
-                } else if(i == 5){
-                    board[i][j].set(Square.BLUE);
-                }
-            }
         }
     }
 

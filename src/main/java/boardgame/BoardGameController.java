@@ -152,8 +152,6 @@ public class BoardGameController {
     private void initialize() {
         Logger.info("Game scene loaded");
 
-        openAlertBox("asd");
-
         if(jsonFile.exists()){
             jsonReaderGSON();
         }

@@ -1,5 +1,8 @@
+import boardgame.BoardGameController;
 import boardgame.model.BoardGameModel;
 import boardgame.model.Square;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.scene.layout.GridPane;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -7,14 +10,8 @@ import org.tinylog.Logger;
 
 public class TestBoardGameModel {
 
-    /**
-     * Sets up the board with a specific configuration where the top row is filled with RED squares
-     * and the bottom row is filled with BLUE squares.
-     * The remaining squares are set to NONE.
-     * This method is used to initialize the board for a specific game scenario.
-     */
     @Test
-    void TestSetupBoard(){
+    void testSetupBoard(){
         BoardGameModel model = new BoardGameModel();
 
         model.setupBoard(0, 2);
@@ -47,4 +44,20 @@ public class TestBoardGameModel {
         Assertions.assertEquals(3, model.colorData[3][2]);
         Assertions.assertEquals(2, model.colorData[5][2]);
     }
+
+    @Test
+    void testWhatColor(){
+        BoardGameModel model = new BoardGameModel();
+        for(int i=0; i<6; i++){
+            for(int j = 0; j<7; j++){
+                model.setupBoard(i,j);
+            }
+        }
+
+        Assertions.assertEquals("red", model.whatColor(0,0));
+        Assertions.assertEquals("no color", model.whatColor(1,1));
+        Assertions.assertEquals("black", model.whatColor(3,2));
+        Assertions.assertEquals("blue", model.whatColor(5,2));
+    }
+
 }
