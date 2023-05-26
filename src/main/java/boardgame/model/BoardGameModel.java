@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BoardGameModel {
 
-    public static int BOARD_SIZE = 7;
+    private static int BOARD_SIZE = 7;
 
     private int colorCode;
     private int onRowToShow;
@@ -30,6 +30,11 @@ public class BoardGameModel {
     private String redName;
     private String blueName;
 
+    /**
+     * Represents the color data for a board game.
+     * This two-dimensional array holds integer values representing colors.
+     * The array dimensions are 6 rows and 7 columns.
+     */
     public int[][] colorData = new int [6][7];
     private int redCount;
     private int blueCount;
@@ -39,6 +44,12 @@ public class BoardGameModel {
     private SimpleBooleanProperty blueWon = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty isTie = new SimpleBooleanProperty(false);
 
+    /**
+     * Represents the current phase of a game.
+     * This property holds the current game phase as an ObjectProperty.
+     * It can be accessed and modified using the provided getter and setter methods.
+     * The initial value of the property is set to GamePhase.RED.
+     */
     public ObjectProperty<GamePhase> currentPhase = new SimpleObjectProperty<>(GamePhase.RED);
     private boolean isGameOver = false;
 
@@ -71,7 +82,7 @@ public class BoardGameModel {
     }
 
     /**
-     * Checks if the red player won
+     * Checks if the red player won.
      * @return {@code true} if the red player won, {@code false} otherwise.
      */
     public BooleanProperty getRedWon(){
@@ -79,7 +90,7 @@ public class BoardGameModel {
     }
 
     /**
-     * Checks if the blue player won
+     * Checks if the blue player won.
      * @return {@code true} if the blue player won, {@code false} otherwise.
      */
     public BooleanProperty getBlueWon(){
@@ -87,7 +98,7 @@ public class BoardGameModel {
     }
 
     /**
-     * Checks if the game ended on a tie
+     * Checks if the game ended on a tie.
      * @return {@code true} if the game ended on a tie, {@code false} otherwise.
      */
     public BooleanProperty getIsTie(){
@@ -95,7 +106,7 @@ public class BoardGameModel {
     }
 
     /**
-     * Sets the number for turns taken in the game
+     * Sets the number for turns taken in the game.
      * @param turnsTaken The number of turns so far.
      */
     public void setTurnsTaken(int turnsTaken) {
@@ -103,16 +114,16 @@ public class BoardGameModel {
     }
 
     /**
-     * Sets the name for the red player
-     * @param redName The name of the red player
+     * Sets the name for the red player.
+     * @param redName The name of the red player.
      */
     public void setRedName(String redName) {
         this.redName = redName;
     }
 
     /**
-     * Sets the name for the blue player
-     * @param blueName The name of the blue player
+     * Sets the name for the blue player.
+     * @param blueName The name of the blue player.
      */
     public void setBlueName(String blueName) {
         this.blueName = blueName;
@@ -124,7 +135,7 @@ public class BoardGameModel {
      * @return {@code true} if the game is over, {@code false} otherwise.
      */
     public boolean checkForGameOver(){
-        // Calculate the number of legal moves for red and blue players
+        // Calculate the number of legal moves for red and blue players.
         calculateRedMoveCount();
         calculateRedCount();
         calculateBlueMoveCount();
@@ -138,7 +149,7 @@ public class BoardGameModel {
             Logger.info(" == Blue won == ");
             return true;
         }
-        // Check if blue player has lost
+        // Check if blue player has lost.
         if(blueCount == 0 || nrOfLegalBlueMoves == 0){
             redWon.set(true);
             currentPhase.set(GamePhase.OVER);
@@ -146,7 +157,7 @@ public class BoardGameModel {
             Logger.info(" == Red won == ");
             return true;
         }
-        // Check if the game is tied
+        // Check if the game is tied.
         if(blueCount == redCount && (nrOfLegalBlueMoves == 0 && nrOfLegalRedMoves == 0)){
             isTie.set(true);
             currentPhase.set(GamePhase.OVER);
@@ -154,7 +165,7 @@ public class BoardGameModel {
             Logger.info(" == Tie == ");
             return true;
         }
-        // The game is not over
+        // The game is not over.
         return false;
     }
 
@@ -478,7 +489,7 @@ public class BoardGameModel {
      *
      * @param i the row index of the position
      * @param j the column index of the position
-     * @return the Square value at the specified position
+     * @return the Square value at the specified position.
      */
     public Square getSquareAtPosition(int i, int j) {
         return board[i][j].get();
