@@ -1,3 +1,11 @@
-05-28 19:37:33 [INFO] TestBoardGameModel.testSetupBoard() - Square at (0, 2): RED
-05-28 19:37:33 [INFO] TestBoardGameModel.testSetupBoard() - Square at (5, 4): BLUE
-05-28 19:37:33 [INFO] TestBoardGameModel.testSetupBoard() - Square at (2, 3): NONE
+05-28 20:57:25 [INFO] boardgame.StartScreenController.initialize() - Start Screen loaded
+05-28 20:57:25 [INFO] boardgame.StartScreenController.initialize() - Font loaded successfully
+05-28 20:57:27 [INFO] boardgame.StartScreenController.startGame() - Loading game scene...
+05-28 20:57:27 [INFO] boardgame.BoardGameController.initialize() - Game scene loaded
+05-28 20:57:27 [INFO] boardgame.BoardGameController.initialize() - Board initialized
+05-28 20:57:27 [INFO] boardgame.BoardGameController.initialize() - Turn of RED
+05-28 20:57:28 [INFO] boardgame.BoardGameController.lambda$initialize$0() - Red player name set: a
+05-28 20:57:28 [INFO] boardgame.BoardGameController.lambda$initialize$0() - Red player name set: as
+05-28 20:57:28 [INFO] boardgame.BoardGameController.lambda$initialize$0() - Red player name set: asd
+05-28 20:57:29 [INFO] boardgame.BoardGameController.lambda$initialize$1() - Blue player name set: a
+05-28 20:57:29 [INFO] boardgame.BoardGameController.lambda$initialize$1() - Blue player name set: ad

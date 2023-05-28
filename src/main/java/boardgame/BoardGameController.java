@@ -169,20 +169,16 @@ public class BoardGameController {
         Logger.info("Board initialized");
 
 
-        redName.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue){
-                redNameString = redName.getText();
-                model.setRedName(redNameString);
-                Logger.info("Red player name set: " + redNameString);
-            }
+        redName.textProperty().addListener((observable, oldValue, newValue) -> {
+            redNameString = redName.getText();
+            model.setRedName(redNameString);
+            Logger.info("Red player name set: " + redNameString);
         });
 
-        blueName.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue){
-                blueNameString = blueName.getText();
-                model.setBlueName(blueNameString);
-                Logger.info("Blue player name set: " + blueNameString);
-            }
+        blueName.textProperty().addListener((observable, oldValue, newValue) -> {
+            blueNameString = blueName.getText();
+            model.setBlueName(blueNameString);
+            Logger.info("Blue player name set: " + blueNameString);
         });
 
         roundText.textProperty().bind(Bindings.concat("", Bindings
