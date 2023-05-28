@@ -7,6 +7,9 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contains the logic of the game.
+ */
 public class BoardGameModel {
 
     private static int BOARD_SIZE = 7;

@@ -39,9 +39,6 @@ public class EndScreenController {
         } else{
             scoreText.setText("No games played yet");
         }
-
-        //scoreText.setFont(alataFont);
-
     }
 
     public void jsonReaderGSON(){

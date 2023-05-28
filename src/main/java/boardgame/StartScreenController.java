@@ -25,14 +25,11 @@ public class StartScreenController {
     @FXML
     private void initialize(){
 
-
-
         Logger.info("Start Screen loaded");
 
         try {
             Font alataFont = Font.loadFont( Main.class.getClassLoader().getResourceAsStream(alataPath), 30);
             Logger.info("Font loaded successfully");
-
 
         } catch (Exception e){
             Logger.info("Something went wrong!");
